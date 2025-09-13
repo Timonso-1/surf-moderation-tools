@@ -5,9 +5,9 @@ import dev.slne.surfModerationTools.commands.rotateCommand
 import org.bukkit.plugin.java.JavaPlugin
 import kotlin.jvm.java
 
-val plugin get() = JavaPlugin.getPlugin(SurfModerationTools::class.java)
+val plugin get() = JavaPlugin.getPlugin(BukkitMain::class.java)
 
-class SurfModerationTools : SuspendingJavaPlugin() {
+class BukkitMain : SuspendingJavaPlugin() {
 
     override suspend fun onEnableAsync() {
         rotateCommand()
