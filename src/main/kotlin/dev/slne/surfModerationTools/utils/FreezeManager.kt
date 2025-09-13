@@ -4,7 +4,7 @@ import org.bukkit.entity.Player
 import java.util.UUID
 
 object FreezeManager {
-    val frozenPlayers: MutableSet<UUID> = mutableSetOf()
+    val frozenPlayers = mutableObjectSetOf<UUID>()
 
     fun freezePlayer(player: Player): Boolean {
         if (!isPlayerFrozen(player)) {
