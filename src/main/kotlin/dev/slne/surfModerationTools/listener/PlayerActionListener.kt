@@ -34,7 +34,6 @@ class PlayerActionListener : Listener {
         }
     }
 
-
     @EventHandler
     fun onPlayerMove(event: PlayerMoveEvent) {
         val player = event.player
