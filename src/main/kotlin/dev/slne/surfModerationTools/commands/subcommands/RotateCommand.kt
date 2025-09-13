@@ -28,12 +28,12 @@ suspend fun CommandAPICommand.rotateCommand() = subcommand("playerRotate") {
             }
 
             val targetLocation = targetPlayer.player?.location
-            val randomZFloat = (-180..180).random().toFloat()
-            val randomYFloat = (-90..90).random().toFloat()
+            val randomYaw = (-180..180).random().toFloat()
+            val randomPitch = (-90..90).random().toFloat()
 
             if (targetLocation != null) {
                 withContext(plugin.regionDispatcher(targetLocation)) {
-                    targetLocation.setRotation(randomZFloat, randomYFloat)
+                    targetLocation.setRotation(randomYaw, randomPitch)
                     targetPlayer.player?.teleport(targetLocation)
                 }
 
