@@ -14,6 +14,5 @@ class SurfModerationTools : SuspendingJavaPlugin() {
     }
 
     override suspend fun onDisableAsync() {
-
     }
 }
