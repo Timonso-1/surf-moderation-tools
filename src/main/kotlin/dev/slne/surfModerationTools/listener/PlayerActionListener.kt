@@ -39,6 +39,9 @@ class PlayerActionListener : Listener {
     @EventHandler
     fun onPlayerMove(event: PlayerMoveEvent) {
         val player = event.player
+        if(!event.hasChangedBlock()) {
+            return
+        }
         plugin.launch(plugin.entityDispatcher(player)) {
             if (FreezeManager.isPlayerFrozen(player)) {
                 sendFrozenMessage(player, "Du bist eingefroren und kannst dich nicht bewegen.")
@@ -49,11 +52,6 @@ class PlayerActionListener : Listener {
                     location.y++
                     player.teleport(location)
                 }
-
-                if(!event.hasChangedBlock()) {
-                    return@launch
-                }
-
                 event.isCancelled = true
             }
         }
