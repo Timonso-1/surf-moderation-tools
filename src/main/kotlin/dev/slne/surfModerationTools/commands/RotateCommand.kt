@@ -11,7 +11,7 @@ import dev.slne.surfModerationTools.permissions.Permissions
 import dev.slne.surfModerationTools.plugin
 import org.bukkit.entity.Player
 
-fun rotateCommand() = commandAPICommand("playerRotate") {
+fun rotateCommand() = commandAPICommand("rotate") {
     playerArgument("targetPlayer")
     withPermission(Permissions.COMMAND_ROTATE)
 
