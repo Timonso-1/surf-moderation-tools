@@ -26,6 +26,5 @@ class BukkitMain : SuspendingJavaPlugin() {
     }
 
     override suspend fun onDisableAsync() {
-        logger.info("Bye <3")
     }
 }
