@@ -7,7 +7,7 @@ plugins {
 group = "dev.slne"
 
 surfPaperPluginApi {
-    mainClass("dev.slne.surfModerationTools.BukkitMain.")
+    mainClass("dev.slne.surfModerationTools.BukkitMain")
     generateLibraryLoader(false)
     authors.add("MikeyLLP")
 
