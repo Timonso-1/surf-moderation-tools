@@ -19,13 +19,12 @@ fun rotateCommand() = commandAPICommand("playerRotate") {
     anyExecutor { sender, args ->
         val targetPlayer = args[0] as Player
 
-        val targetLocation = targetPlayer.location
         val randomYaw = (-180..180).random().toFloat()
         val randomPitch = (-90..90).random().toFloat()
 
         plugin.launch {
             withContext(plugin.entityDispatcher(targetPlayer)) {
-                targetLocation.setRotation(randomYaw, randomPitch)
+                targetPlayer.setRotation(randomYaw, randomPitch)
             }
 
             sender.sendText {
