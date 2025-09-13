@@ -1,6 +1,7 @@
 package dev.slne.surfModerationTools
 
 import com.github.shynixn.mccoroutine.folia.SuspendingJavaPlugin
+import dev.slne.surf.surfapi.bukkit.api.event.register
 import dev.slne.surfModerationTools.commands.freezeCommand
 import dev.slne.surfModerationTools.commands.rotateCommand
 import dev.slne.surfModerationTools.commands.unfreezeCommand
