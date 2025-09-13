@@ -25,7 +25,7 @@ class PlayerActionListener : Listener {
         .build<UUID, Long>()
 
     private fun sendFrozenMessage(player: Player, message: String) {
-        if (messageCooldown.getIfPresent(player) == null) {
+        if (messageCooldown.getOrDefault(player.uniqueId, 0L) < System.currentTimeMillis) {
             player.sendText {
                 appendPrefix()
                 error(message)
