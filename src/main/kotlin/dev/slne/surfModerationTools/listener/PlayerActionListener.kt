@@ -64,8 +64,8 @@ class PlayerActionListener : Listener {
     fun onPlayerAttack(event: EntityDamageByEntityEvent) {
         val damager = event.damager
         if (damager is Player) {
-            sendFrozenMessage(damager, "Du bist eingefroren und kannst niemanden angreifen.")
             if (FreezeManager.isPlayerFrozen(damager)) {
+                sendFrozenMessage(damager, "Du bist eingefroren und kannst niemanden angreifen.")
                 event.isCancelled = true
             }
         }
