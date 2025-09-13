@@ -33,7 +33,9 @@ fun rotateCommand() = commandAPICommand("playerRotate") {
 
                 sender.sendText {
                     appendPrefix()
-                    success("Der Spieler wurde rotiert.")
+                    success("Der Spieler ")
+                    variableValue(targetPlayer.name.toString())
+                    success(" wurde erfolgreich rotiert.")
                 }
             }
         }
