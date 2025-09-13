@@ -18,7 +18,6 @@ class BukkitMain : SuspendingJavaPlugin() {
         freezeCommand()
         unfreezeCommand()
 
-        val manager = server.pluginManager
 
         PlayerActionListener().register()
 
