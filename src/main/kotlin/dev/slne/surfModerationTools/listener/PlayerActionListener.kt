@@ -30,7 +30,7 @@ class PlayerActionListener : Listener {
                 appendPrefix()
                 error(message)
             }
-            messageCooldown.put(player, true)
+            messageCooldown.put(player.uniqueId, System.currentTimeMillis() + 3_000)
         }
     }
 
