@@ -22,7 +22,6 @@ class BukkitMain : SuspendingJavaPlugin() {
 
         PlayerActionListener().register()
 
-        logger.info("${this.name} Successfully enabled.")
     }
 
     override suspend fun onDisableAsync() {
