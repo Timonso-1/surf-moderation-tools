@@ -20,7 +20,7 @@ class BukkitMain : SuspendingJavaPlugin() {
 
         val manager = server.pluginManager
 
-        manager.registerEvents(PlayerActionListener(), this)
+        PlayerActionListener().register()
 
         logger.info("${this.name} Successfully enabled.")
     }
