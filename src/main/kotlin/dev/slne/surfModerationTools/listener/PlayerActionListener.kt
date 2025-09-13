@@ -22,7 +22,7 @@ class PlayerActionListener : Listener {
 
     private val messageCooldown = Caffeine.newBuilder()
         .expireAfterWrite(2, TimeUnit.SECONDS)
-        .build<Player, Boolean>()
+        .build<UUID, Long>()
 
     private fun sendFrozenMessage(player: Player, message: String) {
         if (messageCooldown.getIfPresent(player) == null) {
