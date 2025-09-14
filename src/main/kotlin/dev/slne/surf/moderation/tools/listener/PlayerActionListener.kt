@@ -1,11 +1,11 @@
-package dev.slne.surfModerationTools.listener
+package dev.slne.surf.moderation.tools.listener
 
 import com.github.benmanes.caffeine.cache.Caffeine
 import com.github.shynixn.mccoroutine.folia.entityDispatcher
 import com.github.shynixn.mccoroutine.folia.launch
+import dev.slne.surf.moderation.tools.plugin
+import dev.slne.surf.moderation.tools.utils.FreezeManager
 import dev.slne.surf.surfapi.core.api.messages.adventure.sendText
-import dev.slne.surfModerationTools.plugin
-import dev.slne.surfModerationTools.utils.FreezeManager
 import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
@@ -17,7 +17,7 @@ import org.bukkit.event.player.PlayerInteractEntityEvent
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.player.PlayerMoveEvent
 import org.bukkit.event.player.PlayerQuitEvent
-import java.util.UUID
+import java.util.*
 import java.util.concurrent.TimeUnit
 
 class PlayerActionListener : Listener {
@@ -48,7 +48,7 @@ class PlayerActionListener : Listener {
                     location.y++
                     player.teleport(location)
                 }
-                if(!event.hasChangedBlock()) {
+                if (!event.hasChangedBlock()) {
                     return@launch
                 }
                 event.isCancelled = true

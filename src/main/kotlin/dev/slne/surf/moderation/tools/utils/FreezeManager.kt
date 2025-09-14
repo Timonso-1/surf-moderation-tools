@@ -1,8 +1,8 @@
-package dev.slne.surfModerationTools.utils
+package dev.slne.surf.moderation.tools.utils
 
 import dev.slne.surf.surfapi.core.api.util.mutableObjectSetOf
 import org.bukkit.entity.Player
-import java.util.UUID
+import java.util.*
 
 object FreezeManager {
     val frozenPlayers = mutableObjectSetOf<UUID>()
