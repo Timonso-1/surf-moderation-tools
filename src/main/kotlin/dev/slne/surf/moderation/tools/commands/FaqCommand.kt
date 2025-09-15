@@ -1,17 +1,26 @@
 package dev.slne.surf.moderation.tools.commands
 
+import com.github.benmanes.caffeine.cache.Caffeine
+import com.github.shynixn.mccoroutine.folia.launch
 import dev.jorel.commandapi.kotlindsl.*
+import dev.slne.surf.moderation.tools.plugin
 import dev.slne.surf.moderation.tools.utils.Faq
 import dev.slne.surf.moderation.tools.utils.ModPermissionRegistry
 import dev.slne.surf.moderation.tools.utils.appendArtyPrefix
 import dev.slne.surf.surfapi.bukkit.api.extensions.server
 import dev.slne.surf.surfapi.core.api.messages.adventure.sendText
+import dev.slne.surf.surfapi.core.api.messages.adventure.sound
+import kotlinx.coroutines.Dispatchers
 import net.kyori.adventure.text.format.TextDecoration
+import org.bukkit.Sound
 import org.bukkit.entity.Player
+import java.util.concurrent.TimeUnit
+
+private val messageCooldown = Caffeine.newBuilder()
+    .expireAfterWrite(5, TimeUnit.SECONDS)
+    .build<Faq, Long>()
 
 fun faqCommand() = commandAPICommand("faq") {
-
-    // TODO: Caffeine for duplicate FAQ requests in short time
 
     withPermission(ModPermissionRegistry.COMMAND_FAQ)
     multiLiteralArgument("faq", *Faq.ALL_FAQS.map { it.name }.toTypedArray())
@@ -25,7 +34,6 @@ fun faqCommand() = commandAPICommand("faq") {
         val faqEntry = Faq.getFaqByName(faq) ?: run {
             player.sendText {
                 appendPrefix()
-
                 error("Es wurde kein FAQ-Eintrag mit dem Namen ")
                 variableValue(faq)
                 error(" gefunden.")
@@ -34,29 +42,47 @@ fun faqCommand() = commandAPICommand("faq") {
             return@playerExecutor
         }
 
-        sendFaqMessage(faqEntry, usableTargets)
+        sendFaqMessage(player, faqEntry, usableTargets)
     }
 }
 
-private fun sendFaqMessage(faq: Faq, targets: Collection<Player> = emptyList()) {
-    if (targets.isNotEmpty()) {
-        targets.forEach { target ->
-            target.sendText {
-                appendArtyPrefix()
-                append {
-                    append(target.displayName())
-                    decorate(TextDecoration.BOLD)
+private fun sendFaqMessage(player: Player, faq: Faq, targets: Collection<Player> = emptyList()) {
+    plugin.launch(Dispatchers.IO) {
+        if ((messageCooldown.getIfPresent(faq) ?: 0) < System.currentTimeMillis()) {
+            messageCooldown.put(faq, System.currentTimeMillis() + 5_000)
+
+            if (targets.isNotEmpty()) {
+                targets.forEach { target ->
+                    target.sendText {
+                        appendArtyPrefix()
+                        append {
+                            variableValue(target.name)
+                            decorate(TextDecoration.BOLD)
+                        }
+                        appendSpace()
+                        append(faq.message)
+                    }
+
+                    target.playSound(sound {
+                        type(Sound.BLOCK_NOTE_BLOCK_HARP)
+                        source(net.kyori.adventure.sound.Sound.Source.PLAYER)
+                        volume(1f)
+                        pitch(2f)
+                    }, net.kyori.adventure.sound.Sound.Emitter.self())
                 }
-                appendSpace()
+                return@launch
+            }
+
+            server.sendText {
+                appendArtyPrefix()
                 append(faq.message)
             }
+            return@launch
         }
 
-        return
-    }
-
-    server.sendText {
-        appendArtyPrefix()
-        append(faq.message)
+        player.sendText {
+            appendPrefix()
+            error("Du musst noch warten, bevor du den FAQ-Eintrag verwendest.")
+        }
     }
 }
