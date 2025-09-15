@@ -56,7 +56,7 @@ private fun sendFaqMessage(player: Player, faq: Faq, targets: Collection<Player>
                     target.sendText {
                         appendArtyPrefix()
                         append {
-                            variableValue(target.name)
+                            text(target.name)
                             decorate(TextDecoration.BOLD)
                         }
                         appendSpace()
@@ -64,10 +64,10 @@ private fun sendFaqMessage(player: Player, faq: Faq, targets: Collection<Player>
                     }
 
                     target.playSound(sound {
-                        type(Sound.BLOCK_NOTE_BLOCK_HARP)
+                        type(Sound.BLOCK_NOTE_BLOCK_BELL)
                         source(net.kyori.adventure.sound.Sound.Source.PLAYER)
                         volume(1f)
-                        pitch(2f)
+                        pitch(1f)
                     }, net.kyori.adventure.sound.Sound.Emitter.self())
                 }
                 return@launch
