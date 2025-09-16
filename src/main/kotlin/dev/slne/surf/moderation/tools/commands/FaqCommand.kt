@@ -45,8 +45,7 @@ fun faqCommand() = commandAPICommand("faq") {
     }
 }
 
-private fun sendFaqMessage(player: Player, faq: Faq, targets: Collection<Player> = emptyList()) {
-    plugin.launch(Dispatchers.IO) {
+private fun sendFaqMessage(player: Player, faq: Faq, targets: Collection<Player> = emptyList()) = plugin.launch(Dispatchers.IO) {
         if ((messageCooldown.getIfPresent(faq) ?: 0) < System.currentTimeMillis()) {
             messageCooldown.put(faq, System.currentTimeMillis() + 5_000)
 
