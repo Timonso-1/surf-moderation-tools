@@ -10,7 +10,7 @@ sealed class Faq(
 ) {
 
     companion object {
-        val ALL_FAQS = listOf(
+        fun all() = listOf(
             Whitelist,
             Ticket,
             Rules,
