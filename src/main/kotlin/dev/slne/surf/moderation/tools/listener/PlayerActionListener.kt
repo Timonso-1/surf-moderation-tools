@@ -43,10 +43,10 @@ class PlayerActionListener : Listener {
             if (FreezeManager.isPlayerFrozen(player)) {
                 sendFrozenMessage(player, "Du bist eingefroren und kannst dich nicht bewegen.")
                 if (player.location.block.type == Material.AIR) {
-                    val location = player.location
+                    val location = player.location.clone()
                     location.y = player.world.getHighestBlockYAt(location).toDouble()
                     location.y++
-                    player.teleport(location)
+                    player.teleportAsync(location)
                 }
                 if (!event.hasChangedBlock()) {
                     return@launch
