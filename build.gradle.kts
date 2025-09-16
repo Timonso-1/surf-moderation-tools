@@ -5,7 +5,7 @@ plugins {
     id("dev.slne.surf.surfapi.gradle.paper-plugin")
 }
 
-group = "dev.slne.surf"
+group = "dev.slne.surf.moderation.tools"
 version = findProperty("version") as String
 
 dependencies {
