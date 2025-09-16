@@ -16,13 +16,15 @@ import org.bukkit.Sound
 import org.bukkit.entity.Player
 import java.util.concurrent.TimeUnit
 
+private val cooldown = plugin.artyMessagesCooldownConfig.artyMessagesCooldownInMil.toLong()
+
 private val messageCooldown = Caffeine.newBuilder()
-    .expireAfterWrite(5, TimeUnit.SECONDS)
+    .expireAfterWrite(cooldown, TimeUnit.MILLISECONDS)
     .build<Faq, Long>()
 
 fun faqCommand() = commandAPICommand("faq") {
     withPermission(ModPermissionRegistry.COMMAND_FAQ)
-    multiLiteralArgument("faq", *Faq.ALL_FAQS.map { it.name }.toTypedArray())
+    multiLiteralArgument("faq", *Faq.all().map { it.name }.toTypedArray())
     entitySelectorArgumentManyPlayers("targets", allowEmpty = true, optional = true)
 
     playerExecutor { player, args ->
@@ -45,9 +47,10 @@ fun faqCommand() = commandAPICommand("faq") {
     }
 }
 
-private fun sendFaqMessage(player: Player, faq: Faq, targets: Collection<Player> = emptyList()) = plugin.launch(Dispatchers.IO) {
+private fun sendFaqMessage(player: Player, faq: Faq, targets: Collection<Player> = emptyList()) =
+    plugin.launch(Dispatchers.IO) {
         if ((messageCooldown.getIfPresent(faq) ?: 0) < System.currentTimeMillis()) {
-            messageCooldown.put(faq, System.currentTimeMillis() + 5_000)
+            messageCooldown.put(faq, System.currentTimeMillis() + cooldown)
 
             if (targets.isNotEmpty()) {
                 targets.forEach {
@@ -83,4 +86,3 @@ private fun sendFaqMessage(player: Player, faq: Faq, targets: Collection<Player>
             error("Du musst noch warten, bevor du den Faq-Eintrag verwendest.")
         }
     }
-}

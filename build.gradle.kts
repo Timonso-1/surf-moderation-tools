@@ -8,12 +8,14 @@ plugins {
 group = "dev.slne.surf.moderation.tools"
 version = findProperty("version") as String
 
+
 dependencies {
     compileOnly(libs.surf.bitmap)
 }
 
 surfPaperPluginApi {
     mainClass("dev.slne.surf.moderation.tools.BukkitMain")
+    foliaSupported(true)
     generateLibraryLoader(false)
     authors.add("MikeyLLP")
 
