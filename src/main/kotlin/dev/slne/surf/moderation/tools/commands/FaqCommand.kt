@@ -21,7 +21,6 @@ private val messageCooldown = Caffeine.newBuilder()
     .build<Faq, Long>()
 
 fun faqCommand() = commandAPICommand("faq") {
-
     withPermission(ModPermissionRegistry.COMMAND_FAQ)
     multiLiteralArgument("faq", *Faq.ALL_FAQS.map { it.name }.toTypedArray())
     entitySelectorArgumentManyPlayers("targets", allowEmpty = true, optional = true)
