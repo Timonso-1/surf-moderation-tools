@@ -80,7 +80,7 @@ private fun sendFaqMessage(player: Player, faq: Faq, targets: Collection<Player>
 
         player.sendText {
             appendPrefix()
-            error("Du musst noch warten, bevor du den FAQ-Eintrag verwendest.")
+            error("Du musst noch warten, bevor du den Faq-Eintrag verwendest.")
         }
     }
 }
