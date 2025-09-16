@@ -16,7 +16,7 @@ sealed class Faq(
             Rules,
         )
 
-        fun getFaqByName(name: String) = ALL_FAQS.firstOrNull { it.name.equals(name, ignoreCase = true) }
+        fun getFaqByName(name: String) = all().firstOrNull { it.name.equals(name, ignoreCase = true) }
     }
 
     object Whitelist : Faq("how-to-join", {
