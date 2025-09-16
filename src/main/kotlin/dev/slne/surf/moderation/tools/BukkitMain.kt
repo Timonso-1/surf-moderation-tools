@@ -13,7 +13,6 @@ val plugin get() = JavaPlugin.getPlugin(BukkitMain::class.java)
 
 class BukkitMain : SuspendingJavaPlugin() {
     override suspend fun onEnableAsync() {
-
         faqCommand()
 
         rotateCommand()
