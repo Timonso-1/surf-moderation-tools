@@ -12,7 +12,6 @@ import org.bukkit.plugin.java.JavaPlugin
 val plugin get() = JavaPlugin.getPlugin(BukkitMain::class.java)
 
 class BukkitMain : SuspendingJavaPlugin() {
-
     override suspend fun onEnableAsync() {
 
         faqCommand()
