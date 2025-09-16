@@ -50,18 +50,18 @@ private fun sendFaqMessage(player: Player, faq: Faq, targets: Collection<Player>
             messageCooldown.put(faq, System.currentTimeMillis() + 5_000)
 
             if (targets.isNotEmpty()) {
-                targets.forEach { target ->
-                    target.sendText {
+                targets.forEach {
+                    it.sendText {
                         appendArtyPrefix()
                         append {
-                            text(target.name)
+                            text(it.name)
                             decorate(TextDecoration.BOLD)
                         }
                         appendSpace()
                         append(faq.message)
                     }
 
-                    target.playSound(sound {
+                    it.playSound(sound {
                         type(Sound.BLOCK_NOTE_BLOCK_BELL)
                         source(net.kyori.adventure.sound.Sound.Source.PLAYER)
                         volume(1f)
