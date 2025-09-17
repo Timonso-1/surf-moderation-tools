@@ -17,7 +17,7 @@ surfPaperPluginApi {
     mainClass("dev.slne.surf.moderation.tools.BukkitMain")
     foliaSupported(true)
     generateLibraryLoader(false)
-    authors.add("MikeyLLP")
+    authors.add(listOf("MikeyLLP", "Red", "Timonso").toString())
 
     serverDependencies {
         registerRequired("surf-bitmap-provider-paper")

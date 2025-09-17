@@ -23,9 +23,11 @@ fun freezeCommand() = commandAPICommand("freeze") {
         if (!FreezeManager.freezePlayer(targetPlayer)) {
             sender.sendText {
                 appendPrefix()
-                error("Der Spieler ")
+                error("Der Spieler")
+                appendSpace()
                 variableValue(targetPlayer.name)
-                error(" ist bereits eingefroren.")
+                appendSpace()
+                error("ist bereits eingefroren.")
             }
             return@anyExecutor
         }
