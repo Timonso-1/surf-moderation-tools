@@ -1,12 +1,8 @@
 package dev.slne.surf.moderation.tools.listener
 
 import com.github.benmanes.caffeine.cache.Caffeine
-import com.github.shynixn.mccoroutine.folia.entityDispatcher
-import com.github.shynixn.mccoroutine.folia.launch
-import dev.slne.surf.moderation.tools.plugin
 import dev.slne.surf.moderation.tools.utils.FreezeManager
 import dev.slne.surf.surfapi.core.api.messages.adventure.sendText
-import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -39,20 +35,13 @@ class PlayerActionListener : Listener {
     @EventHandler
     fun onPlayerMove(event: PlayerMoveEvent) {
         val player = event.player
-        plugin.launch(plugin.entityDispatcher(player)) {
-            if (FreezeManager.isPlayerFrozen(player)) {
-                sendFrozenMessage(player, "Du bist eingefroren und kannst dich nicht bewegen.")
-                if (player.location.block.type == Material.AIR) {
-                    val location = player.location.clone()
-                    location.y = player.world.getHighestBlockYAt(location).toDouble()
-                    location.y++
-                    player.teleportAsync(location)
-                }
-                if (!event.hasChangedBlock()) {
-                    return@launch
-                }
-                event.isCancelled = true
+
+        if (FreezeManager.isPlayerFrozen(player)) {
+            sendFrozenMessage(player, "Du bist eingefroren und kannst dich nicht bewegen.")
+            if (!event.hasChangedBlock()) {
+                return
             }
+            event.isCancelled = true
         }
     }
 
