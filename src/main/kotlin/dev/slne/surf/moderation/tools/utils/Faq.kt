@@ -3,6 +3,7 @@ package dev.slne.surf.moderation.tools.utils
 import dev.slne.surf.surfapi.core.api.messages.adventure.buildText
 import dev.slne.surf.surfapi.core.api.messages.adventure.clickOpensUrl
 import dev.slne.surf.surfapi.core.api.messages.builder.SurfComponentBuilder
+import net.kyori.adventure.text.format.TextDecoration
 
 sealed class Faq(
     val name: String,
@@ -20,7 +21,19 @@ sealed class Faq(
     }
 
     object Whitelist : Faq("how-to-join", {
-        text("So kannst du dich whitelisten lassen:")
+        text("Informationen, wie du dich whitelisten lassen kannst, findest du hier.")
+        appendSpace()
+        append {
+            text("Für Events ")
+            decorate(TextDecoration.BOLD)
+        }
+        text("benötigst du jedoch")
+        appendSpace()
+        append {
+            text("keine Whitelist")
+            decorate(TextDecoration.BOLD)
+        }
+        text(", sondern nur für den Survival-Server:")
         appendSpace()
         append {
             variableValue("Anleitung zum Beitreten")
@@ -32,7 +45,7 @@ sealed class Faq(
     })
 
     object Ticket : Faq("how-to-open-ticket", {
-        text("Eine Anleitung, wie du ein Ticket erstellen kannst, findest du hier:")
+        text("Eine ausführliche Anleitung zum Erstellen eines Tickets findest du hier:")
         appendSpace()
         append {
             variableValue("Anleitung")
@@ -54,5 +67,4 @@ sealed class Faq(
             clickOpensUrl("https://server.castcrafter.de/rules")
         }
     })
-
 }
