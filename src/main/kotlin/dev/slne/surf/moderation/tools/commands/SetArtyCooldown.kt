@@ -11,18 +11,18 @@ import dev.slne.surf.surfapi.core.api.messages.adventure.sendText
 
 fun CommandAPICommand.setArtyCooldownCommand() = subcommand("setArtyCooldown") {
     withPermission(ModPermissionRegistry.COMMAND_CONFIG)
-    integerArgument("milliseconds")
+    longArgument("millis")
     anyExecutor { sender, args ->
-        val milliseconds: Int by args
+        val millis: Long by args
         plugin.surfModerationToolConfig.edit {
-            artyMessagesCooldownConfig.artyMessagesCooldownInMil = milliseconds
+            artyMessagesCooldownConfig.artyMessagesCooldownInMil = millis
         }
 
         sender.sendText {
             appendPrefix()
             success("Der Artillery Nachrichten Cooldown wurde auf")
             appendSpace()
-            variableValue("$milliseconds")
+            variableValue("$millis")
             appendSpace()
             success("ms gesetzt.")
         }
