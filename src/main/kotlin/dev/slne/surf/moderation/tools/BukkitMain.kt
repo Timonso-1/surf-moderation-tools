@@ -11,6 +11,7 @@ val plugin get() = JavaPlugin.getPlugin(BukkitMain::class.java)
 
 class BukkitMain : SuspendingJavaPlugin() {
     override suspend fun onEnableAsync() {
+
         configCommand()
         faqCommand()
         rotateCommand()
@@ -25,7 +26,5 @@ class BukkitMain : SuspendingJavaPlugin() {
     override suspend fun onDisableAsync() {
     }
 
-    val surfModerationToolConfig = SurfModerationToolConfigProvider()
-
-    val artyMessagesCooldownConfig get() = surfModerationToolConfig.config.artyMessagesCooldownConfig
+    val moderationToolConfig = SurfModerationToolConfigProvider()
 }

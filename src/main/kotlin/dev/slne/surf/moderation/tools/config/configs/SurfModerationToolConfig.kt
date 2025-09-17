@@ -4,5 +4,5 @@ import org.spongepowered.configurate.objectmapping.ConfigSerializable
 
 @ConfigSerializable
 data class SurfModerationToolConfig(
-    val artyMessagesCooldownConfig: ArtyMessagesCooldownConfig = ArtyMessagesCooldownConfig(),
+    var artyMessagesCooldownInMil: Long = 5_000
 )

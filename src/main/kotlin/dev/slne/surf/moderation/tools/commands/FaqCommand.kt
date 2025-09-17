@@ -16,7 +16,7 @@ import org.bukkit.Sound
 import org.bukkit.entity.Player
 import java.util.concurrent.TimeUnit
 
-private val cooldown by lazy { plugin.artyMessagesCooldownConfig.artyMessagesCooldownInMil.toLong() }
+private val cooldown get() = plugin.moderationToolConfig.config.artyMessagesCooldownInMil
 private val messageCooldown by lazy {
     Caffeine.newBuilder()
         .expireAfterWrite(cooldown, TimeUnit.MILLISECONDS)
