@@ -4,5 +4,5 @@ import org.spongepowered.configurate.objectmapping.ConfigSerializable
 
 @ConfigSerializable
 data class ArtyMessagesCooldownConfig(
-    var artyMessagesCooldownInMil: Int = 5000
+    var artyMessagesCooldownInMil: Long = 5_000
 )
