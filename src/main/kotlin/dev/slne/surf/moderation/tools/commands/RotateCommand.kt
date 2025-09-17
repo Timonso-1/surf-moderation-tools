@@ -1,4 +1,4 @@
-package dev.slne.surfModerationTools.commands
+package dev.slne.surf.moderation.tools.commands
 
 import com.github.shynixn.mccoroutine.folia.entityDispatcher
 import com.github.shynixn.mccoroutine.folia.launch
@@ -6,14 +6,14 @@ import dev.jorel.commandapi.kotlindsl.anyExecutor
 import dev.jorel.commandapi.kotlindsl.commandAPICommand
 import dev.jorel.commandapi.kotlindsl.getValue
 import dev.jorel.commandapi.kotlindsl.playerArgument
+import dev.slne.surf.moderation.tools.plugin
+import dev.slne.surf.moderation.tools.utils.ModPermissionRegistry
 import dev.slne.surf.surfapi.core.api.messages.adventure.sendText
-import dev.slne.surfModerationTools.permissions.Permissions
-import dev.slne.surfModerationTools.plugin
 import org.bukkit.entity.Player
 
 fun rotateCommand() = commandAPICommand("rotate") {
     playerArgument("targetPlayer")
-    withPermission(Permissions.COMMAND_ROTATE)
+    withPermission(ModPermissionRegistry.COMMAND_ROTATE)
 
     anyExecutor { sender, args ->
         val targetPlayer: Player by args

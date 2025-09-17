@@ -1,12 +1,8 @@
-package dev.slne.surfModerationTools.listener
+package dev.slne.surf.moderation.tools.listener
 
 import com.github.benmanes.caffeine.cache.Caffeine
-import com.github.shynixn.mccoroutine.folia.entityDispatcher
-import com.github.shynixn.mccoroutine.folia.launch
+import dev.slne.surf.moderation.tools.utils.FreezeManager
 import dev.slne.surf.surfapi.core.api.messages.adventure.sendText
-import dev.slne.surfModerationTools.plugin
-import dev.slne.surfModerationTools.utils.FreezeManager
-import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -17,7 +13,7 @@ import org.bukkit.event.player.PlayerInteractEntityEvent
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.player.PlayerMoveEvent
 import org.bukkit.event.player.PlayerQuitEvent
-import java.util.UUID
+import java.util.*
 import java.util.concurrent.TimeUnit
 
 class PlayerActionListener : Listener {
@@ -39,20 +35,13 @@ class PlayerActionListener : Listener {
     @EventHandler
     fun onPlayerMove(event: PlayerMoveEvent) {
         val player = event.player
-        plugin.launch(plugin.entityDispatcher(player)) {
-            if (FreezeManager.isPlayerFrozen(player)) {
-                sendFrozenMessage(player, "Du bist eingefroren und kannst dich nicht bewegen.")
-                if (player.location.block.type == Material.AIR) {
-                    val location = player.location
-                    location.y = player.world.getHighestBlockYAt(location).toDouble()
-                    location.y++
-                    player.teleport(location)
-                }
-                if(!event.hasChangedBlock()) {
-                    return@launch
-                }
-                event.isCancelled = true
+
+        if (FreezeManager.isPlayerFrozen(player)) {
+            sendFrozenMessage(player, "Du bist eingefroren und kannst dich nicht bewegen.")
+            if (!event.hasChangedBlock()) {
+                return
             }
+            event.isCancelled = true
         }
     }
 

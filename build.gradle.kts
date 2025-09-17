@@ -1,15 +1,29 @@
+import dev.slne.surf.surfapi.gradle.util.registerRequired
 import dev.slne.surf.surfapi.gradle.util.withSurfApiBukkit
 
 plugins {
     id("dev.slne.surf.surfapi.gradle.paper-plugin")
 }
 
-group = "dev.slne"
+group = "dev.slne.surf.moderation.tools"
+version = findProperty("version") as String
+
+
+dependencies {
+    compileOnly(libs.surf.bitmap)
+}
 
 surfPaperPluginApi {
-    mainClass("dev.slne.surfModerationTools.BukkitMain")
+    mainClass("dev.slne.surf.moderation.tools.BukkitMain")
+    foliaSupported(true)
     generateLibraryLoader(false)
     authors.add("MikeyLLP")
+    authors.add("Timonso")
+    authors.add("red")
+
+    serverDependencies {
+        registerRequired("surf-bitmap-provider-paper")
+    }
 
     runServer {
         withSurfApiBukkit()
