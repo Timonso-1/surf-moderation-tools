@@ -26,10 +26,7 @@ sealed class Faq(
         text("Für Events ", TextDecoration.BOLD)
         text("benötigst du jedoch")
         appendSpace()
-        append {
-            text("keine Whitelist")
-            decorate(TextDecoration.BOLD)
-        }
+        text("keine Whitelist", TextDecoration.BOLD)
         text(", sondern nur für den Survival-Server:")
         appendSpace()
         append {
