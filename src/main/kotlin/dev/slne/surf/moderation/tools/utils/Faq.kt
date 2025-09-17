@@ -23,10 +23,7 @@ sealed class Faq(
     object Whitelist : Faq("how-to-join", {
         text("Informationen, wie du dich whitelisten lassen kannst, findest du hier.")
         appendSpace()
-        append {
-            text("Für Events ")
-            decorate(TextDecoration.BOLD)
-        }
+        text("Für Events ", TextDecoration.BOLD)
         text("benötigst du jedoch")
         appendSpace()
         append {
