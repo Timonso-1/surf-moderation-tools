@@ -45,7 +45,7 @@ sealed class Faq(
     })
 
     object Ticket : Faq("how-to-open-ticket", {
-        text("Eine ausführliche Anleitung zum Erstellen eines Tickets findest du hier:")
+        text("Eine Anleitung zum Erstellen eines Tickets findest du hier:")
         appendSpace()
         append {
             variableValue("Anleitung")
