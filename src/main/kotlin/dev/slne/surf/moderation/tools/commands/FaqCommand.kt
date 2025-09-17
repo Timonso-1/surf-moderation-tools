@@ -16,11 +16,12 @@ import org.bukkit.Sound
 import org.bukkit.entity.Player
 import java.util.concurrent.TimeUnit
 
-private val cooldown = plugin.artyMessagesCooldownConfig.artyMessagesCooldownInMil.toLong()
-
-private val messageCooldown = Caffeine.newBuilder()
-    .expireAfterWrite(cooldown, TimeUnit.MILLISECONDS)
-    .build<Faq, Long>()
+private val cooldown by lazy { plugin.artyMessagesCooldownConfig.artyMessagesCooldownInMil.toLong() }
+private val messageCooldown by lazy {
+    Caffeine.newBuilder()
+        .expireAfterWrite(cooldown, TimeUnit.MILLISECONDS)
+        .build<Faq, Long>()
+}
 
 fun faqCommand() = commandAPICommand("faq") {
     withPermission(ModPermissionRegistry.COMMAND_FAQ)
