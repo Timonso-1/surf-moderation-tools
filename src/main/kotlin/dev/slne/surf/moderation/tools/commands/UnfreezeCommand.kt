@@ -25,6 +25,8 @@ fun unfreezeCommand() = commandAPICommand("unfreeze") {
             }
             return@anyExecutor
         }
+        
+        freezeService.unfreeze(targetPlayer.uniqueId)
 
         sender.sendText {
             appendPrefix()

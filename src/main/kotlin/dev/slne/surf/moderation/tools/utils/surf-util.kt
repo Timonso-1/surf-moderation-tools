@@ -23,7 +23,7 @@ fun SurfComponentBuilder.appendArtyPrefix(
     appendSpace()
     darkSpacer(">>")
     appendSpace()
-}//TODO: remove
+}
 
 
 fun Cancellable.cancel() {
