@@ -10,24 +10,24 @@ sealed class Faq(
 ) {
     companion object {
         fun all() = listOf(
-            HowToJoin,
-            HowToOpenTicket,
-            Rulebook,
-            ReadTheDocs,
-            SurvivalDowntime,
-            NextEvent,
-            TakePartInEvent,
-            ServerModpack,
-            Ask,
-            ClanInformation,
-            HowToCreatePlot,
-            WhyNoVillagers,
-            HowToInstallVoiceChat,
-            ReportPlayer,
-            ReportBug,
-            WhyNoElytraInTheEnd,
-            BenefitsAsVeteran,
-            WhyNoTeleportation
+            Ask,  
+            BenefitsAsVeteran,  
+            ClanInformation,  
+            HowToCreatePlot,  
+            HowToInstallVoiceChat,  
+            HowToJoin,  
+            HowToOpenTicket,  
+            NextEvent,  
+            ReadTheDocs,  
+            ReportBug,  
+            ReportPlayer,  
+            Rulebook,  
+            ServerModpack,  
+            SurvivalDowntime,  
+            TakePartInEvent,  
+            WhyNoElytraInTheEnd,  
+            WhyNoTeleportation,  
+            WhyNoVillagers  
         )
 
         private fun byName(name: String) =
