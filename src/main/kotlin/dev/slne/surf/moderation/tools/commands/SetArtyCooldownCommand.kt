@@ -6,16 +6,17 @@ import dev.jorel.commandapi.kotlindsl.getValue
 import dev.jorel.commandapi.kotlindsl.longArgument
 import dev.jorel.commandapi.kotlindsl.subcommand
 import dev.slne.surf.moderation.tools.plugin
-import dev.slne.surf.moderation.tools.utils.ModPermissionRegistry
+import dev.slne.surf.moderation.tools.utils.PermissionRegistry
 import dev.slne.surf.surfapi.core.api.messages.adventure.sendText
 
-fun CommandAPICommand.setArtyCooldownCommand() = subcommand("setArtyCooldown") {
-    withPermission(ModPermissionRegistry.COMMAND_CONFIG)
+fun CommandAPICommand.setMessageCooldownCommand() = subcommand("setMessageCooldown") {
+    withPermission(PermissionRegistry.COMMAND_SURF_MOD_TOOLS)
     longArgument("millis")
     anyExecutor { sender, args ->
         val millis: Long by args
+
         plugin.moderationToolConfig.edit {
-            artyMessagesCooldownInMil = millis
+            faqCooldown = millis
         }
 
         sender.sendText {

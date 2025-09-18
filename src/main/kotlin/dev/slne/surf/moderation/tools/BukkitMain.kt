@@ -11,19 +11,13 @@ val plugin get() = JavaPlugin.getPlugin(BukkitMain::class.java)
 
 class BukkitMain : SuspendingJavaPlugin() {
     override suspend fun onEnableAsync() {
-
-        configCommand()
+        surfModerationToolsCommand()
         faqCommand()
         rotateCommand()
         freezeCommand()
         unfreezeCommand()
 
-
         PlayerActionListener().register()
-
-    }
-
-    override suspend fun onDisableAsync() {
     }
 
     val moderationToolConfig = SurfModerationToolConfigProvider()

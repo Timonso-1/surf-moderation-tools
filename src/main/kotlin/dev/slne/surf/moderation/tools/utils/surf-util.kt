@@ -3,7 +3,7 @@ package dev.slne.surf.moderation.tools.utils
 import dev.slne.surf.bitmap.common.provider.BitmapProvider
 import dev.slne.surf.surfapi.core.api.messages.builder.SurfComponentBuilder
 import net.kyori.adventure.text.format.TextColor
-
+import org.bukkit.event.Cancellable
 
 fun SurfComponentBuilder.appendArtyPrefix(
     foregroundColor: TextColor = TextColor.fromHexString("#fcfcfc")!!,
@@ -23,4 +23,9 @@ fun SurfComponentBuilder.appendArtyPrefix(
     appendSpace()
     darkSpacer(">>")
     appendSpace()
+}//TODO: remove
+
+
+fun Cancellable.cancel() {
+    isCancelled = true
 }

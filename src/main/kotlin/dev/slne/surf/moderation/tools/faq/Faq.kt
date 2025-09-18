@@ -1,4 +1,4 @@
-package dev.slne.surf.moderation.tools.utils
+package dev.slne.surf.moderation.tools.faq
 
 import dev.slne.surf.surfapi.core.api.messages.adventure.buildText
 import dev.slne.surf.surfapi.core.api.messages.adventure.clickOpensUrl
@@ -8,7 +8,6 @@ sealed class Faq(
     val name: String,
     val message: SurfComponentBuilder.() -> Unit
 ) {
-
     companion object {
         fun all() = listOf(
             Whitelist,
@@ -16,7 +15,10 @@ sealed class Faq(
             Rules,
         )
 
-        fun getFaqByName(name: String) = all().firstOrNull { it.name.equals(name, ignoreCase = true) }
+        private fun byName(name: String) =
+            all().firstOrNull { it.name.equals(name, ignoreCase = true) }
+
+        operator fun get(name: String) = byName(name)
     }
 
     object Whitelist : Faq("how-to-join", {
