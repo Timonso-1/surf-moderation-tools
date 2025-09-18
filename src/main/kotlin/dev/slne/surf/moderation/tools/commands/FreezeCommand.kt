@@ -7,20 +7,21 @@ import dev.jorel.commandapi.kotlindsl.commandAPICommand
 import dev.jorel.commandapi.kotlindsl.getValue
 import dev.jorel.commandapi.kotlindsl.playerArgument
 import dev.slne.surf.moderation.tools.plugin
-import dev.slne.surf.moderation.tools.utils.FreezeManager
-import dev.slne.surf.moderation.tools.utils.ModPermissionRegistry
+import dev.slne.surf.moderation.tools.service.freezeService
+import dev.slne.surf.moderation.tools.utils.PermissionRegistry
 import dev.slne.surf.surfapi.core.api.messages.adventure.sendText
 import org.bukkit.Material
 import org.bukkit.entity.Player
 
 fun freezeCommand() = commandAPICommand("freeze") {
     playerArgument("targetPlayer")
-    withPermission(ModPermissionRegistry.COMMAND_FREEZE)
+    withPermission(PermissionRegistry.COMMAND_FREEZE)
 
     anyExecutor { sender, args ->
         val targetPlayer: Player by args
 
-        if (!FreezeManager.freezePlayer(targetPlayer)) {
+
+        if (freezeService.isFrozen(targetPlayer.uniqueId)) {
             sender.sendText {
                 appendPrefix()
                 error("Der Spieler")
@@ -31,6 +32,9 @@ fun freezeCommand() = commandAPICommand("freeze") {
             }
             return@anyExecutor
         }
+
+
+        freezeService.freeze(targetPlayer.uniqueId)
 
         plugin.launch(plugin.entityDispatcher(targetPlayer)) {
             if (targetPlayer.location.block.type == Material.AIR) {
@@ -49,6 +53,5 @@ fun freezeCommand() = commandAPICommand("freeze") {
             appendSpace()
             success("wurde erfolgreich eingefroren.")
         }
-
     }
 }

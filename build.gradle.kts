@@ -17,6 +17,7 @@ surfPaperPluginApi {
     mainClass("dev.slne.surf.moderation.tools.BukkitMain")
     foliaSupported(true)
     generateLibraryLoader(false)
+    
     authors.add("MikeyLLP")
     authors.add("Timonso")
     authors.add("red")

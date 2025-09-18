@@ -4,18 +4,22 @@ import dev.jorel.commandapi.CommandAPICommand
 import dev.jorel.commandapi.kotlindsl.anyExecutor
 import dev.jorel.commandapi.kotlindsl.subcommand
 import dev.slne.surf.moderation.tools.plugin
-import dev.slne.surf.moderation.tools.utils.ModPermissionRegistry
+import dev.slne.surf.moderation.tools.utils.PermissionRegistry
 import dev.slne.surf.surfapi.core.api.messages.adventure.sendText
+import kotlin.system.measureTimeMillis
 
-fun CommandAPICommand.reloadConfigCommand() = subcommand("reload") {
-    withPermission(ModPermissionRegistry.COMMAND_CONFIG)
-    anyExecutor { sender, args ->
+fun CommandAPICommand.surfModToolsReloadCommand() = subcommand("reload") {
+    withPermission(PermissionRegistry.COMMAND_SURF_MOD_TOOLS)
+    anyExecutor { sender, _ ->
 
-        plugin.moderationToolConfig.reload()
+        val ms = measureTimeMillis {
+            plugin.moderationToolConfig.reload()
+        }
 
         sender.sendText {
             appendPrefix()
-            success("Die Config wurde neu geladen.")
+            success("Das Plugin wurde erfolgreich neu geladen ")
+            spacer("({$ms}ms)")
         }
     }
 }
