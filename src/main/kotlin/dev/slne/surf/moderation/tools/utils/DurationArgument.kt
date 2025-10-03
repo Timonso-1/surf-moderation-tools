@@ -18,7 +18,7 @@ object DurationArgument {
         })
     }
 
-    private val regex = Regex("^(\\d+)([smhdwp])\$")
+    private val regex = Regex("^(\\d+)([smhdw])\$")
 
     private fun parseRangeToMillis(input: String): Long? {
         val match = regex.matchEntire(input.trim()) ?: return null
