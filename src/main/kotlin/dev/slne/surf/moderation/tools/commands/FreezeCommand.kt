@@ -24,7 +24,7 @@ fun freezeCommand() = commandAPICommand("freeze") {
         val duration: Long by args
 
         val targetUuid = targetPlayer.uniqueId
-        
+
         if (freezeService.isFrozen(targetUuid)) {
             sender.sendText {
                 appendPrefix()
@@ -54,9 +54,8 @@ fun freezeCommand() = commandAPICommand("freeze") {
                 }
             }
             if (!teleported) {
-                // Fallback: teleport to world spawn location
-                val spawnLocation = world.spawnLocation
-                targetPlayer.teleportAsync(spawnLocation)
+                val fallbackLocation = world.spawnLocation
+                targetPlayer.teleportAsync(fallbackLocation)
             }
         }
 

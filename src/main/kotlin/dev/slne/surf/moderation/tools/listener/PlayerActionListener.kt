@@ -90,6 +90,18 @@ class PlayerActionListener : Listener {
         }
     }
 
+    @EventHandler
+    fun onDamage(event: EntityDamageByEntityEvent) {
+        val entity = event.entity
+        if (entity !is Player) {
+            return
+        }
+
+        if (freezeService.isFrozen(entity.uniqueId)) {
+            event.cancel()
+        }
+    }
+
     private fun sendResultMessage(player: Player, message: String) {
         if ((messageCooldown.getIfPresent(player.uniqueId) ?: 0) < System.currentTimeMillis()) {
             player.sendText {
