@@ -13,7 +13,6 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.event.player.PlayerInteractEntityEvent
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.player.PlayerMoveEvent
-import org.bukkit.event.player.PlayerQuitEvent
 import java.util.*
 import java.util.concurrent.TimeUnit
 
@@ -90,12 +89,6 @@ class PlayerActionListener : Listener {
             event.cancel()
         }
     }
-
-    @EventHandler
-    fun onQuit(event: PlayerQuitEvent) {
-        freezeService.unfreeze(event.player.uniqueId)
-    }
-
 
     private fun sendResultMessage(player: Player, message: String) {
         if ((messageCooldown.getIfPresent(player.uniqueId) ?: 0) < System.currentTimeMillis()) {
