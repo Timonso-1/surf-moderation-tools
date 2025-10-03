@@ -1,4 +1,4 @@
-# 🌊 Surf Moderation Tools
+# Surf Moderation Tools
 
 **Surf Moderation Tools** is a Minecraft plugin designed to help supporters and moderators work more efficiently. It
 provides quick administrative and support functions directly in-game.
