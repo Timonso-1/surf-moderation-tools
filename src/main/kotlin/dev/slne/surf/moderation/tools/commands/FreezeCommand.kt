@@ -43,13 +43,20 @@ fun freezeCommand() = commandAPICommand("freeze") {
             val location = targetPlayer.location.clone()
             val world = location.world
 
+            var teleported = false
             for (y in location.blockY downTo 0) {
                 val block = world.getBlockAt(location.blockX, y, location.blockZ)
                 if (block.type.isSolid) {
                     location.y = y + 1.0
                     targetPlayer.teleportAsync(location)
+                    teleported = true
                     break
                 }
+            }
+            if (!teleported) {
+                // Fallback: teleport to world spawn location
+                val spawnLocation = world.spawnLocation
+                targetPlayer.teleportAsync(spawnLocation)
             }
         }
 
