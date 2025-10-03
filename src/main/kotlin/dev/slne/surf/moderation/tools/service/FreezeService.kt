@@ -22,7 +22,8 @@ class FreezeService {
     fun isFrozen(uuid: UUID): Boolean {
         val isFrozen = frozenPlayers.contains(uuid)
         if (isFrozen) {
-            if ((freezeTimer.getIfPresent(uuid) ?: 0) < System.currentTimeMillis()) {
+            val expireTime = freezeTimer.getIfPresent(uuid)
+            if (expireTime == null || expireTime < System.currentTimeMillis()) {
                 unfreeze(uuid)
                 return false
             }
