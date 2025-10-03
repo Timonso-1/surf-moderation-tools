@@ -48,11 +48,11 @@ provides quick administrative and support functions directly in-game.
 
 ### Admin
 
-- **`/surfmodtools setMessageCooldown <time(ms)>`** ⚙️  
-  Set the FAQ message cooldown.
+- **`/surfmodtools setMessageCooldown <time(ms)>`**   
+  ⚙️ Set the FAQ message cooldown.
 
-- **`/surfmodtools reload`** ⚙️  
-  Reload the plugin config without restarting the server.
+- **`/surfmodtools reload`**   
+  ⚙️ Reload the plugin config without restarting the server.
 
 ## 🛠 Installation
 
