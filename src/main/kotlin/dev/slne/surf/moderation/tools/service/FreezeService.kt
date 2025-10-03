@@ -16,7 +16,7 @@ class FreezeService {
 
     fun unfreeze(uuid: UUID) {
         frozenPlayers.remove(uuid)
-        freezeTimer.getIfPresent(uuid)?.let { freezeTimer.invalidate(uuid) }
+        freezeTimer.invalidate(uuid)
     }
 
     fun isFrozen(uuid: UUID): Boolean {
