@@ -43,7 +43,6 @@ provides quick administrative and support functions directly in-game.
     - WhyNoElytraInTheEnd
     - WhyNoTeleportation
     - WhyNoVillagers
-    -
   </details>
 
 ### Admin
