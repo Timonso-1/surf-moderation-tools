@@ -59,8 +59,8 @@ provides quick administrative and support functions directly in-game.
 2. Ensure the following dependencies are installed:
     - [Surf API](https://github.com/SLNE-Development/surf-api)
     - [Surf Bitmap Provider](https://github.com/SLNE-Development/surf-bitmap-provider)
-4. Make sure **Java 24** is installed.
-5. Place the plugin in your server's `plugins` folder and restart the server.
+3. Make sure **Java 24** is installed.
+4. Place the plugin in your server's `plugins` folder and restart the server.
 
 ## ⚙️ Configuration
 
