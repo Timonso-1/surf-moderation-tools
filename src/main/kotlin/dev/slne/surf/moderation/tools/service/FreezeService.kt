@@ -1,17 +1,35 @@
 package dev.slne.surf.moderation.tools.service
 
-import dev.slne.surf.surfapi.core.api.util.freeze
+import com.github.benmanes.caffeine.cache.Caffeine
 import dev.slne.surf.surfapi.core.api.util.mutableObjectSetOf
-import java.util.UUID
+import java.util.*
 
 class FreezeService {
     private val frozenPlayers = mutableObjectSetOf<UUID>()
+    private val freezeTimer = Caffeine.newBuilder()
+        .build<UUID, Long>()
 
-    fun freeze(uuid: UUID) = frozenPlayers.add(uuid)
-    fun unfreeze(uuid: UUID) = frozenPlayers.remove(uuid)
-    fun isFrozen(uuid: UUID) = frozenPlayers.contains(uuid)
+    fun freeze(uuid: UUID, duration: Long) {
+        frozenPlayers.add(uuid)
+        freezeTimer.put(uuid, System.currentTimeMillis() + duration)
+    }
 
-    fun frozenPlayers() = frozenPlayers.freeze()
+    fun unfreeze(uuid: UUID) {
+        frozenPlayers.remove(uuid)
+        freezeTimer.invalidate(uuid)
+    }
+
+    fun isFrozen(uuid: UUID): Boolean {
+        val isFrozen = frozenPlayers.contains(uuid)
+        if (isFrozen) {
+            val expireTime = freezeTimer.getIfPresent(uuid)
+            if (expireTime == null || expireTime < System.currentTimeMillis()) {
+                unfreeze(uuid)
+                return false
+            }
+        }
+        return isFrozen
+    }
 
     companion object {
         val INSTANCE = FreezeService()

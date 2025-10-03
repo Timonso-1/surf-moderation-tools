@@ -9,19 +9,23 @@ import dev.jorel.commandapi.kotlindsl.playerArgument
 import dev.slne.surf.moderation.tools.plugin
 import dev.slne.surf.moderation.tools.service.freezeService
 import dev.slne.surf.moderation.tools.utils.PermissionRegistry
+import dev.slne.surf.moderation.tools.utils.durationArgument
 import dev.slne.surf.surfapi.core.api.messages.adventure.sendText
-import org.bukkit.Material
 import org.bukkit.entity.Player
 
+
 fun freezeCommand() = commandAPICommand("freeze") {
-    playerArgument("targetPlayer")
     withPermission(PermissionRegistry.COMMAND_FREEZE)
+    playerArgument("targetPlayer")
+    durationArgument("duration")
 
     anyExecutor { sender, args ->
         val targetPlayer: Player by args
+        val duration: Long by args
 
+        val targetUuid = targetPlayer.uniqueId
 
-        if (freezeService.isFrozen(targetPlayer.uniqueId)) {
+        if (freezeService.isFrozen(targetUuid)) {
             sender.sendText {
                 appendPrefix()
                 error("Der Spieler")
@@ -33,15 +37,25 @@ fun freezeCommand() = commandAPICommand("freeze") {
             return@anyExecutor
         }
 
-
-        freezeService.freeze(targetPlayer.uniqueId)
+        freezeService.freeze(targetUuid, duration)
 
         plugin.launch(plugin.entityDispatcher(targetPlayer)) {
-            if (targetPlayer.location.block.type == Material.AIR) {
-                val location = targetPlayer.location.clone()
-                location.y = targetPlayer.world.getHighestBlockYAt(location).toDouble()
-                location.y++
-                targetPlayer.teleportAsync(location)
+            val location = targetPlayer.location.clone()
+            val world = location.world
+
+            var teleported = false
+            for (y in location.blockY downTo 0) {
+                val block = world.getBlockAt(location.blockX, y, location.blockZ)
+                if (block.type.isSolid) {
+                    location.y = y + 1.0
+                    targetPlayer.teleportAsync(location)
+                    teleported = true
+                    break
+                }
+            }
+            if (!teleported) {
+                val fallbackLocation = world.spawnLocation
+                targetPlayer.teleportAsync(fallbackLocation)
             }
         }
 
