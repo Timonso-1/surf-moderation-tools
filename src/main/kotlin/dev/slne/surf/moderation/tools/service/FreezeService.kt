@@ -20,13 +20,14 @@ class FreezeService {
     }
 
     fun isFrozen(uuid: UUID): Boolean {
-        if (frozenPlayers.contains(uuid)) {
+        val isFrozen = frozenPlayers.contains(uuid)
+        if (isFrozen) {
             if ((freezeTimer.getIfPresent(uuid) ?: 0) < System.currentTimeMillis()) {
                 unfreeze(uuid)
                 return false
             }
         }
-        return frozenPlayers.contains(uuid)
+        return isFrozen
     }
 
     companion object {
