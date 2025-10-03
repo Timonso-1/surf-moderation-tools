@@ -8,8 +8,8 @@ import dev.jorel.commandapi.kotlindsl.getValue
 import dev.jorel.commandapi.kotlindsl.playerArgument
 import dev.slne.surf.moderation.tools.plugin
 import dev.slne.surf.moderation.tools.service.freezeService
-import dev.slne.surf.moderation.tools.utils.DurationArgument
 import dev.slne.surf.moderation.tools.utils.PermissionRegistry
+import dev.slne.surf.moderation.tools.utils.durationArgument
 import dev.slne.surf.surfapi.core.api.messages.adventure.sendText
 import org.bukkit.entity.Player
 
@@ -17,7 +17,7 @@ import org.bukkit.entity.Player
 fun freezeCommand() = commandAPICommand("freeze") {
     withPermission(PermissionRegistry.COMMAND_FREEZE)
     playerArgument("targetPlayer")
-    withArguments(DurationArgument.durationArgument("duration"))
+    durationArgument("duration")
 
     anyExecutor { sender, args ->
         val targetPlayer: Player by args
