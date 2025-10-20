@@ -2,9 +2,9 @@ package dev.slne.surf.moderation.tools.commands
 
 import com.github.shynixn.mccoroutine.folia.entityDispatcher
 import com.github.shynixn.mccoroutine.folia.launch
-import dev.jorel.commandapi.arguments.PlayerProfileArgument
 import dev.jorel.commandapi.kotlindsl.anyExecutor
 import dev.jorel.commandapi.kotlindsl.commandAPICommand
+import dev.jorel.commandapi.kotlindsl.entitySelectorArgumentOnePlayer
 import dev.jorel.commandapi.kotlindsl.getValue
 import dev.slne.surf.moderation.tools.plugin
 import dev.slne.surf.moderation.tools.service.freezeService
@@ -16,7 +16,7 @@ import org.bukkit.entity.Player
 
 fun freezeCommand() = commandAPICommand("freeze") {
     withPermission(PermissionRegistry.COMMAND_FREEZE)
-    PlayerProfileArgument("targetPlayer")
+    entitySelectorArgumentOnePlayer("targetPlayer")
     durationArgument("duration")
 
     anyExecutor { sender, args ->
