@@ -21,6 +21,6 @@ class BukkitMain : SuspendingJavaPlugin() {
         freezeCommand()
         unfreezeCommand()
 
-        PlayerActionListener().register()
+        PlayerActionListener.register()
     }
 }
