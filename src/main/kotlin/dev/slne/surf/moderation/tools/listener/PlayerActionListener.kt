@@ -2,7 +2,7 @@ package dev.slne.surf.moderation.tools.listener
 
 import com.github.benmanes.caffeine.cache.Caffeine
 import dev.slne.surf.moderation.tools.service.freezeService
-import dev.slne.surf.moderation.tools.utils.cancel
+import dev.slne.surf.surfapi.bukkit.api.event.cancel
 import dev.slne.surf.surfapi.core.api.messages.adventure.sendText
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
