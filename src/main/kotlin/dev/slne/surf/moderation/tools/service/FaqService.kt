@@ -27,7 +27,7 @@ object FaqService {
     suspend fun sendFaq(
         executor: Player,
         faq: Faq,
-        targets: Collection<Player> = emptyList()
+        targets: Collection<Player>? = null
     ) {
         val now = System.currentTimeMillis()
         val lastUsed = lastFaqUsage.getIfPresent(faq) ?: 0L
@@ -45,7 +45,12 @@ object FaqService {
 
         lastFaqUsage.put(faq, now)
 
-        if (targets.isNotEmpty()) {
+        if (targets.isNullOrEmpty()) {
+            server.sendText {
+                appendArtyPrefix()
+                append(faq.message)
+            }
+        } else {
             supervisorScope {
                 for (target in targets) {
                     launch(plugin.entityDispatcher(target)) {
@@ -67,11 +72,6 @@ object FaqService {
                         }
                     }
                 }
-            }
-        } else {
-            server.sendText {
-                appendArtyPrefix()
-                append(faq.message)
             }
         }
     }
