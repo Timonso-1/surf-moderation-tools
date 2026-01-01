@@ -6,9 +6,9 @@ import net.kyori.adventure.text.format.TextColor
 import org.bukkit.event.Cancellable
 
 fun SurfComponentBuilder.appendArtyPrefix(
-    foregroundColor: TextColor = TextColor.fromHexString("#fcfcfc")!!,
-    shadowColor: TextColor? = TextColor.fromHexString("#a52825")!!,
-    backgroundColor: TextColor = TextColor.fromHexString("#cb312c")!!,
+    foregroundColor: TextColor = TextColor.color(0xfcfcfc),
+    shadowColor: TextColor? = TextColor.color(0xa52825),
+    backgroundColor: TextColor = TextColor.color(0xcb312c),
 ) {
     append(
         BitmapProvider.translateToComponent(
