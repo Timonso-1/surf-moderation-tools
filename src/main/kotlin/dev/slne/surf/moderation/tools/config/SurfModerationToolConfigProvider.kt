@@ -1,6 +1,5 @@
 package dev.slne.surf.moderation.tools.config
 
-import dev.slne.surf.moderation.tools.config.SurfModerationToolConfig
 import dev.slne.surf.moderation.tools.plugin
 import dev.slne.surf.surfapi.core.api.config.manager.SpongeConfigManager
 import dev.slne.surf.surfapi.core.api.config.surfConfigApi
