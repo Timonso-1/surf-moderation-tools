@@ -18,7 +18,7 @@ fun unfreezeCommand() = commandAPICommand("unfreeze") {
 
         if (!freezeService.isFrozen(targetPlayer.uniqueId)) {
             sender.sendText {
-                appendPrefix()
+                appendErrorPrefix()
                 error("Der Spieler ")
                 variableValue(targetPlayer.name)
                 error(" ist nicht eingefroren.")
@@ -29,7 +29,7 @@ fun unfreezeCommand() = commandAPICommand("unfreeze") {
         freezeService.unfreeze(targetPlayer.uniqueId)
 
         sender.sendText {
-            appendPrefix()
+            appendSuccessPrefix()
             success("Der Spieler ")
             variableValue(targetPlayer.name)
             success(" wurde erfolgreich aufgetaut.")

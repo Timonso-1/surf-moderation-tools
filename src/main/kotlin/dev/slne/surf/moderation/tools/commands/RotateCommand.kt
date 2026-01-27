@@ -25,7 +25,7 @@ fun rotateCommand() = commandAPICommand("rotate") {
             targetPlayer.setRotation(randomYaw, randomPitch)
 
             sender.sendText {
-                appendPrefix()
+                appendSuccessPrefix()
                 success("Der Spieler ")
                 variableValue(targetPlayer.name)
                 success(" wurde erfolgreich rotiert.")

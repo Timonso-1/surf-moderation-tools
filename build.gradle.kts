@@ -20,7 +20,7 @@ surfPaperPluginApi {
     
     authors.add("MikeyLLP")
     authors.add("Timonso")
-    authors.add("red")
+    authors.add("Red")
 
     serverDependencies {
         registerRequired("surf-bitmap-provider-paper")

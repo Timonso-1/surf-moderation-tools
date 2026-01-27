@@ -13,7 +13,7 @@ class FaqArgument(nodeName: String) :
     CustomArgument<Faq, String>(StringArgument(nodeName), { info ->
         Faq[info.input] ?: throw CustomArgumentException.fromAdventureComponent {
             buildText {
-                appendPrefix()
+                appendErrorPrefix()
                 error("Der Faq wurde nicht gefunden.")
             }
         }

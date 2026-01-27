@@ -27,7 +27,7 @@ fun freezeCommand() = commandAPICommand("freeze") {
 
         if (freezeService.isFrozen(targetUuid)) {
             sender.sendText {
-                appendPrefix()
+                appendInfoPrefix()
                 error("Der Spieler")
                 appendSpace()
                 variableValue(targetPlayer.name)
@@ -60,12 +60,12 @@ fun freezeCommand() = commandAPICommand("freeze") {
         }
 
         sender.sendText {
-            appendPrefix()
-            success("Der Spieler")
+            appendSuccessPrefix()
+            text("Der Spieler")
             appendSpace()
             variableValue(targetPlayer.name)
             appendSpace()
-            success("wurde erfolgreich eingefroren.")
+            text("wurde erfolgreich eingefroren.")
         }
     }
 }

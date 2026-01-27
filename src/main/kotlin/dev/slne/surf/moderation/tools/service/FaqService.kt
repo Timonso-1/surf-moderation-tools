@@ -58,7 +58,7 @@ class FaqService {
         }
 
         executor.sendText {
-            appendPrefix()
+            appendErrorPrefix()
             error("Du musst noch warten, bevor du den Faq-Eintrag verwendest.")
         }
     }

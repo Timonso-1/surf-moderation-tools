@@ -14,7 +14,7 @@ class DurationArgument(arg: String) : CustomArgument<Long, String>(
         parseRangeToMillis(argument.input)
             ?: throw CustomArgumentException.fromAdventureComponent {
                 buildText {
-                    appendPrefix()
+                    appendErrorPrefix()
                     error("Nutze das Format <Zahl><Einheit> (s, m, h, d, w) für die Dauer.")
                 }
             }
