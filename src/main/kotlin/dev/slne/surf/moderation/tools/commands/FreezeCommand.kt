@@ -61,11 +61,11 @@ fun freezeCommand() = commandAPICommand("freeze") {
 
         sender.sendText {
             appendSuccessPrefix()
-            text("Der Spieler")
+            success("Der Spieler")
             appendSpace()
             variableValue(targetPlayer.name)
             appendSpace()
-            text("wurde erfolgreich eingefroren.")
+            success("wurde erfolgreich eingefroren.")
         }
     }
 }
