@@ -35,7 +35,7 @@ object FaqService {
 
         if (remainingMillis > 0) {
             executor.sendText {
-                appendPrefix()
+                appendErrorPrefix()
                 error("Du musst noch ")
                 variableValue(remainingMillis.milliseconds.toString())
                 error(" warten, bevor du den Faq-Eintrag wieder verwenden kannst.")

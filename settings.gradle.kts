@@ -1,6 +1,6 @@
 rootProject.name = "surf-moderation-tools"
 
-buildscript {
+pluginManagement {
     repositories {
         gradlePluginPortal()
         maven("https://repo.slne.dev/repository/maven-public/") { name = "maven-public" }

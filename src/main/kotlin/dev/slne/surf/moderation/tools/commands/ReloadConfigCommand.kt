@@ -16,7 +16,7 @@ fun CommandAPICommand.surfModToolsReloadCommand() = subcommand("reload") {
         }
 
         sender.sendText {
-            appendPrefix()
+            appendSuccessPrefix()
             success("Das Plugin wurde erfolgreich neu geladen ")
             spacer("({$ms}ms)")
         }

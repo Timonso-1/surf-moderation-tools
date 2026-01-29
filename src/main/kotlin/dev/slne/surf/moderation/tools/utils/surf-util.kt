@@ -12,10 +12,9 @@ fun SurfComponentBuilder.appendArtyPrefix(
 ) {
     append(
         BitmapProvider.translateToComponent(
-            "Admin",
+            "ARTY",
             foregroundColor,
-            backgroundColor,
-            shadowColor
+            backgroundColor
         )
     )
     appendSpace()

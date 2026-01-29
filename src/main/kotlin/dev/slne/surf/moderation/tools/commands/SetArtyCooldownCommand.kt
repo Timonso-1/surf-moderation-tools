@@ -22,7 +22,7 @@ fun CommandAPICommand.setMessageCooldownCommand() = subcommand("setMessageCooldo
         }
 
         sender.sendText {
-            appendPrefix()
+            appendSuccessPrefix()
             success("Der Nachrichten Cooldown wurde auf")
             appendSpace()
             variableValue(cooldown.milliseconds.toString())
