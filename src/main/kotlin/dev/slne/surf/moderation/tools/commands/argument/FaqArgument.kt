@@ -12,9 +12,9 @@ class FaqArgument(nodeName: String) : CustomArgument<Faq, String>(
     { info ->
         Faq.byId(info.input) ?: throw CustomArgumentException.fromMessageBuilder(
             MessageBuilder()
-                .append("Faq ")
+                .append("FAQ ")
                 .appendArgInput()
-                .append(" not found.")
+                .append(" nicht gefunden.")
         )
     }
 ) {
