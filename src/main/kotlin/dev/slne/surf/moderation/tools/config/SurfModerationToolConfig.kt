@@ -1,8 +1,16 @@
 package dev.slne.surf.moderation.tools.config
 
+import dev.slne.surf.moderation.tools.plugin
+import dev.slne.surf.surfapi.core.api.config.SpongeYmlConfigClass
 import org.spongepowered.configurate.objectmapping.ConfigSerializable
 
 @ConfigSerializable
 data class SurfModerationToolConfig(
     var faqCooldown: Long = 5_000
-)
+) {
+    companion object : SpongeYmlConfigClass<SurfModerationToolConfig>(
+        SurfModerationToolConfig::class.java,
+        plugin.dataPath,
+        "config.yml"
+    )
+}

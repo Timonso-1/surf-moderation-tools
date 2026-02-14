@@ -1,17 +1,19 @@
 package dev.slne.surf.moderation.tools.commands
 
 import com.github.shynixn.mccoroutine.folia.entityDispatcher
-import com.github.shynixn.mccoroutine.folia.launch
-import dev.jorel.commandapi.kotlindsl.anyExecutor
 import dev.jorel.commandapi.kotlindsl.commandAPICommand
 import dev.jorel.commandapi.kotlindsl.entitySelectorArgumentOnePlayer
 import dev.jorel.commandapi.kotlindsl.getValue
 import dev.slne.surf.moderation.tools.plugin
-import dev.slne.surf.moderation.tools.service.freezeService
+import dev.slne.surf.moderation.tools.service.FreezeService
 import dev.slne.surf.moderation.tools.utils.PermissionRegistry
 import dev.slne.surf.moderation.tools.utils.durationArgument
+import dev.slne.surf.surfapi.bukkit.api.command.executors.anyExecutorSuspend
 import dev.slne.surf.surfapi.core.api.messages.adventure.sendText
+import kotlinx.coroutines.future.await
+import kotlinx.coroutines.withContext
 import org.bukkit.entity.Player
+import kotlin.time.Duration
 
 
 fun freezeCommand() = commandAPICommand("freeze") {
@@ -19,50 +21,37 @@ fun freezeCommand() = commandAPICommand("freeze") {
     entitySelectorArgumentOnePlayer("targetPlayer")
     durationArgument("duration")
 
-    anyExecutor { sender, args ->
+    anyExecutorSuspend { sender, args ->
         val targetPlayer: Player by args
         val duration: Long by args
 
         val targetUuid = targetPlayer.uniqueId
 
-        if (freezeService.isFrozen(targetUuid)) {
+        if (FreezeService.isFrozen(targetUuid)) {
             sender.sendText {
                 appendInfoPrefix()
-                error("Der Spieler")
-                appendSpace()
                 variableValue(targetPlayer.name)
                 appendSpace()
                 error("ist bereits eingefroren.")
             }
-            return@anyExecutor
+            return@anyExecutorSuspend
         }
 
-        freezeService.freeze(targetUuid, duration)
+        FreezeService.freeze(targetUuid, duration)
 
-        plugin.launch(plugin.entityDispatcher(targetPlayer)) {
-            val location = targetPlayer.location.clone()
+        withContext(plugin.entityDispatcher(targetPlayer)) {
+            val location = targetPlayer.location
             val world = location.world
 
-            var teleported = false
-            for (y in location.blockY downTo 0) {
-                val block = world.getBlockAt(location.blockX, y, location.blockZ)
-                if (block.type.isSolid) {
-                    location.y = y + 1.0
-                    targetPlayer.teleportAsync(location)
-                    teleported = true
-                    break
-                }
-            }
+            val teleported = targetPlayer.teleportAsync(location.toHighestLocation()).await()
+
             if (!teleported) {
-                val fallbackLocation = world.spawnLocation
-                targetPlayer.teleportAsync(fallbackLocation)
+                targetPlayer.teleportAsync(world.spawnLocation).await()
             }
         }
 
         sender.sendText {
             appendSuccessPrefix()
-            success("Der Spieler")
-            appendSpace()
             variableValue(targetPlayer.name)
             appendSpace()
             success("wurde erfolgreich eingefroren.")

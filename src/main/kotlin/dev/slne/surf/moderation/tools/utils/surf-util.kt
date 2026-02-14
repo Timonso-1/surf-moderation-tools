@@ -2,12 +2,13 @@ package dev.slne.surf.moderation.tools.utils
 
 import dev.slne.surf.bitmap.common.provider.BitmapProvider
 import dev.slne.surf.surfapi.core.api.messages.builder.SurfComponentBuilder
+import net.kyori.adventure.text.format.ShadowColor
 import net.kyori.adventure.text.format.TextColor
-import org.bukkit.event.Cancellable
 
 fun SurfComponentBuilder.appendArtyPrefix(
-    foregroundColor: TextColor = TextColor.fromHexString("#fcfcfc")!!,
-    backgroundColor: TextColor = TextColor.fromHexString("#cb312c")!!,
+    foregroundColor: TextColor = TextColor.color(0xfcfcfc),
+    shadowColor: ShadowColor = ShadowColor.shadowColor(0xa52825),
+    backgroundColor: TextColor = TextColor.color(0xcb312c),
 ) {
     append(
         BitmapProvider.translateToComponent(
@@ -21,9 +22,4 @@ fun SurfComponentBuilder.appendArtyPrefix(
     appendSpace()
     darkSpacer(">>")
     appendSpace()
-}
-
-
-fun Cancellable.cancel() {
-    isCancelled = true
 }

@@ -4,264 +4,210 @@ import dev.slne.surf.surfapi.core.api.messages.adventure.buildText
 import dev.slne.surf.surfapi.core.api.messages.adventure.clickOpensUrl
 import dev.slne.surf.surfapi.core.api.messages.builder.SurfComponentBuilder
 
-sealed class Faq(
-    val name: String,
-    val message: SurfComponentBuilder.() -> Unit
-) {
-    companion object {
-        fun all() = listOf(
-            Ask,  
-            BenefitsAsVeteran,  
-            ClanInformation,  
-            HowToCreatePlot,  
-            HowToInstallVoiceChat,  
-            HowToJoin,  
-            HowToOpenTicket,  
-            NextEvent,  
-            ReadTheDocs,  
-            ReportBug,  
-            ReportPlayer,  
-            Rulebook,  
-            ServerModpack,  
-            SurvivalDowntime,  
-            TakePartInEvent,  
-            WhyNoElytraInTheEnd,  
-            WhyNoTeleportation,  
-            WhyNoVillagers  
-        )
+enum class Faq(val id: String, message: SurfComponentBuilder.() -> Unit) {
+    ASK("ask", {
+        text("Wenn du eine Frage hast, stell sie einfach. ")
+        text("Such nicht nach bestimmten Leuten und frag nicht erst, ob du fragen darfst oder ob jemand da ist. ")
+        text("Stell deine Frage direkt und hab kurz Geduld, bis du eine Antwort bekommst.")
+    }),
 
-        private fun byName(name: String) =
-            all().firstOrNull { it.name.equals(name, ignoreCase = true) }
-
-        operator fun get(name: String) = byName(name)
-    }
-
-    object Ask : Faq("ask", {
-        text("Wenn du eine Frage hast, stell sie einfach. Such nicht nach bestimmten Leuten und frag nicht erst, ob du fragen darfst oder ob jemand da ist. Frag einfach und gedulde dich auf eine Antwort.")
-    })
-
-    object BenefitsAsVeteran : Faq("benefits-as-veteran", {
-        text("Veteranen haben den Vorteil einer Priority Queue und kommen dadurch schneller auf den Server. Wie du den Rang bekommst, erfährst du")
+    VETERAN_BENEFITS("veteran-benefits", {
+        text("Veteranen haben den Vorteil einer Priority Queue und kommen dadurch schneller auf den Server. ")
+        text("Wie du den Rang bekommst, erfährst du")
         appendSpace()
         append {
             variableValue("hier")
-            hoverEvent(buildText {
-                spacer("Klicke, um zur Informationsseite zu gelangen.")
-            })
+            hoverEvent(buildText { spacer("Klicke, um zur Informationsseite zu gelangen.") })
             clickOpensUrl("https://server.castcrafter.de/faq.html#veteran-info")
         }
         text(".")
-    })
+    }),
 
-    object ClanInformation : Faq("clan-info", {
-        text("Du möchtest über einen Clan etwas wissen?")
+    CLAN_INFORMATION("clan-info", {
+        text("Du möchtest mehr über Clans wissen?")
         appendSpace()
         append {
             variableValue("Hier")
-            hoverEvent(buildText {
-                spacer("Klicke, um zur Informationsseite zu gelangen.")
-            })
+            hoverEvent(buildText { spacer("Klicke, um zur Informationsseite zu gelangen.") })
             clickOpensUrl("https://server.castcrafter.de/clan-more-info")
         }
         text(" findest du eine Übersicht mit zusätzlichen Informationen.")
-    })
+    }),
 
-    object HowToCreatePlot : Faq("how-to-create-plot", {
+    HOW_TO_CREATE_PLOT("how-to-create-plot", {
         append {
             variableValue("Hier")
-            hoverEvent(buildText {
-                spacer("Klicke, um zur Informationsseite zu gelangen.")
-            })
+            hoverEvent(buildText { spacer("Klicke, um zur Informationsseite zu gelangen.") })
             clickOpensUrl("https://server.castcrafter.de/plots-homepage.html")
         }
-        text(" erfährst du, wie du Grundstücke erstellen kannst.")
-    })
+        text(" erfährst du, wie du ein Grundstück erstellst.")
+    }),
 
-    object HowToInstallVoiceChat : Faq("how-to-install-voice-chat", {
+    HOW_TO_INSTALL_VOICE_CHAT("how-to-install-voice-chat", {
         append {
             variableValue("Hier")
-            hoverEvent(buildText {
-                spacer("Klicke, um zur Informationsseite zu gelangen.")
-            })
+            hoverEvent(buildText { spacer("Klicke, um zur Informationsseite zu gelangen.") })
             clickOpensUrl("https://server.castcrafter.de/faq.html#install-voicechat")
         }
-        text(" erfährst du, wie du den Voice Chat installieren kannst.")
-    })
+        text(" erfährst du, wie du den Voice Chat installierst.")
+    }),
 
-    object HowToJoin : Faq("how-to-join", {
-        text("Informationen, z.B. wie du dich whitelisten lassen kannst, findest du")
+    HOW_TO_JOIN("how-to-join", {
+        text("Informationen, z. B. wie du dich whitelisten lassen kannst, findest du")
         appendSpace()
         append {
             variableValue("hier")
-            hoverEvent(buildText {
-                spacer("Klicke, um auf die Informationsseite zu gelangen.")
-            })
+            hoverEvent(buildText { spacer("Klicke, um auf die Informationsseite zu gelangen.") })
             clickOpensUrl("https://server.castcrafter.de/how-to-join")
         }
-        text(". Für Events benötigst du jedoch keine Whitelist, nur für den Survival-Server. ")
-    })
+        text(". Für Events brauchst du keine Whitelist – nur für den Survival-Server.")
+    }),
 
-    object HowToOpenTicket : Faq("how-to-open-ticket", {
+    HOW_TO_OPEN_TICKET("how-to-open-ticket", {
         text("Eine Anleitung zum Erstellen eines Tickets findest du")
         appendSpace()
         append {
             variableValue("hier")
-            hoverEvent(buildText {
-                spacer("Klicke, um auf die Informationsseite zu gelangen.")
-            })
+            hoverEvent(buildText { spacer("Klicke, um auf die Informationsseite zu gelangen.") })
             clickOpensUrl("https://server.castcrafter.de/support")
         }
         text(".")
-    })
+    }),
 
-    object NextEvent : Faq("next-event", {
-        text("Wenn ein Event geplant ist, wird dies im")
+    NEXT_EVENT("next-event", {
+        text("Wenn ein Event geplant ist, wird es im")
         appendSpace()
         append {
             variableValue("Discord")
-            hoverEvent(buildText {
-                spacer("Klicke, um auf den Discord zu gelangen.")
-            })
+            hoverEvent(buildText { spacer("Klicke, um zum Discord zu gelangen.") })
             clickOpensUrl("https://discord.com/channels/133198459531558912/980810495877607524")
         }
-        text(" oder durch CastCrafter im ")
+        text(" oder von CastCrafter im")
         appendSpace()
         append {
             variableValue("Stream")
-            hoverEvent(buildText {
-                spacer("Klicke, um auf den Twitch-Kanal zu gelangen.")
-            })
+            hoverEvent(buildText { spacer("Klicke, um zum Twitch-Kanal zu gelangen.") })
             clickOpensUrl("https://www.twitch.tv/castcrafter")
         }
         text(" angekündigt.")
-    })
+    }),
 
-    object ReadTheDocs : Faq("read-the-docs", {
+    READ_THE_DOCS("read-the-docs", {
         text("Diese und weitere Fragen werden in unserer ausführlichen")
         appendSpace()
         append {
             variableValue("Dokumentation")
-            hoverEvent(buildText {
-                spacer("Klicke, um auf die Informationsseite zu gelangen.")
-            })
+            hoverEvent(buildText { spacer("Klicke, um auf die Informationsseite zu gelangen.") })
             clickOpensUrl("https://server.castcrafter.de/community-server-landing-page")
         }
         text(" beantwortet.")
-    })
+    }),
 
-    object ReportBug : Faq("report-bug", {
+    REPORT_BUG("report-bug", {
         text("Du hast einen Bug gefunden?")
         appendSpace()
         append {
             variableValue("Hier")
-            hoverEvent(buildText {
-                spacer("Klicke, um auf die Informationsseite zu gelangen.")
-            })
+            hoverEvent(buildText { spacer("Klicke, um auf die Informationsseite zu gelangen.") })
             clickOpensUrl("https://server.castcrafter.de/support#bugreport-ticket")
         }
-        text(" erfährst du wie du ihn reporten kannst, um dem Server zu helfen.")
-    })
+        text(" erfährst du, wie du ihn melden kannst, um dem Server zu helfen.")
+    }),
 
-    object ReportPlayer : Faq("report-player", {
-        text("Du möchtest einen Spieler reporten?")
+    REPORT_PLAYER("report-player", {
+        text("Du möchtest einen Spieler melden?")
         appendSpace()
         append {
             variableValue("Hier")
-            hoverEvent(buildText {
-                spacer("Klicke, um zur Informationsseite zu gelangen.")
-            })
+            hoverEvent(buildText { spacer("Klicke, um zur Informationsseite zu gelangen.") })
             clickOpensUrl("https://server.castcrafter.de/support#report-ticket")
         }
-        text(" zeigen wir dir, wie du das machen kannst.")
-    })
+        text(" zeigen wir dir, wie das geht.")
+    }),
 
-    object Rulebook : Faq("rulebook", {
+    RULEBOOK("rulebook", {
         text("Alle Regeln des Servers findest du")
         appendSpace()
         append {
             variableValue("hier")
-            hoverEvent(buildText {
-                spacer("Klicke, um auf die Informationsseite zu gelangen.")
-            })
+            hoverEvent(buildText { spacer("Klicke, um auf die Informationsseite zu gelangen.") })
             clickOpensUrl("https://server.castcrafter.de/rules")
         }
         text(".")
-    })
+    }),
 
-    object ServerModpack : Faq("server-modpack", {
+    SERVER_MODPACK("server-modpack", {
         append {
             variableValue("Hier")
-            hoverEvent(buildText {
-                spacer("Klicke, um auf die Downloadseite zu gelangen.")
-            })
+            hoverEvent(buildText { spacer("Klicke, um auf die Downloadseite zu gelangen.") })
             clickOpensUrl("https://modrinth.com/modpack/castcrafter-survival-server")
         }
-        text(" kannst du das Server Modpack herunterladen.")
-    })
+        text(" kannst du das Server-Modpack herunterladen.")
+    }),
 
-    object SurvivalDowntime : Faq("survival-downtime", {
-        text("Der 1.21 Survival Server ist zu Ende! Wann der neue Survival Server startet, steht noch in den Sternen aber wir arbeiten bereits daran! Alle Updates & Ankündigungen dazu findest du")
+    SURVIVAL_DOWNTIME("survival-downtime", {
+        text("Der 1.21-Survival-Server ist zu Ende. ")
+        text("Wann der neue Survival-Server startet, steht noch nicht fest – wir arbeiten aber bereits daran. ")
+        text("Alle Updates und Ankündigungen findest du")
         appendSpace()
         append {
             variableValue("hier")
-            hoverEvent(buildText {
-                spacer("Klicke, um auf den Discord zu gelangen.")
-            })
+            hoverEvent(buildText { spacer("Klicke, um zum Discord zu gelangen.") })
             clickOpensUrl("https://discord.com/channels/133198459531558912/980810495877607524")
         }
         text(".")
-    })
+    }),
 
-    object TakePartInEvent : Faq("take-part-in-event", {
+    TAKE_PART_IN_EVENT("take-part-in-event", {
         text("Wie du an einem Event teilnehmen kannst, erfährst du")
         appendSpace()
         append {
             variableValue("hier")
-            hoverEvent(buildText {
-                spacer("Klicke, um zur Informationsseite zu gelangen.")
-            })
+            hoverEvent(buildText { spacer("Klicke, um zur Informationsseite zu gelangen.") })
             clickOpensUrl("https://server.castcrafter.de/how-to-take-part-in-an-event")
         }
         text(".")
-    })
+    }),
 
-    object WhyNoElytraInTheEnd : Faq("why-no-elytra-in-the-end", {
-        text("Du fragst dich warum es im End keine Elytren gibt?")
+    WHY_NO_ELYTRA_IN_THE_END("why-no-elytra-in-the-end", {
+        text("Du fragst dich, warum es im End keine Elytren gibt?")
         appendSpace()
         append {
             variableValue("Hier")
-            hoverEvent(buildText {
-                spacer("Klicke, um zur Informationsseite zu gelangen.")
-            })
+            hoverEvent(buildText { spacer("Klicke, um zur Informationsseite zu gelangen.") })
             clickOpensUrl("https://server.castcrafter.de/faq#why-no-elytra-in-end")
         }
         text(" findest du die Antwort.")
-    })
+    }),
 
-    object WhyNoTeleportation : Faq("why-no-teleportation", {
-        text("Du fragst dich warum es auf dem Server keine Teleportation gibt?")
+    WHY_NO_TELEPORTATION("why-no-teleportation", {
+        text("Du fragst dich, warum es auf dem Server keine Teleportation gibt?")
         appendSpace()
         append {
             variableValue("Hier")
-            hoverEvent(buildText {
-                spacer("Klicke, um zur Informationsseite zu gelangen.")
-            })
+            hoverEvent(buildText { spacer("Klicke, um zur Informationsseite zu gelangen.") })
             clickOpensUrl("https://server.castcrafter.de/faq#why-no-teleportation")
         }
         text(" findest du die Antwort.")
-    })
+    }),
 
-    object WhyNoVillagers : Faq("why-no-villagers", {
-        text("Du fragst dich warum es auf dem Server keine Dorfbewohner gibt?")
+    WHY_NO_VILLAGERS("why-no-villagers", {
+        text("Du fragst dich, warum es auf dem Server keine Dorfbewohner gibt?")
         appendSpace()
         append {
             variableValue("Hier")
-            hoverEvent(buildText {
-                spacer("Klicke, um zur Informationsseite zu gelangen.")
-            })
+            hoverEvent(buildText { spacer("Klicke, um zur Informationsseite zu gelangen.") })
             clickOpensUrl("https://server.castcrafter.de/specials#no-villagers")
         }
         text(" findest du die Antwort.")
-    })
+    });
 
+    val message = SurfComponentBuilder(message)
+
+    companion object {
+        fun byId(name: String) =
+            entries.find { it.id.equals(name, ignoreCase = true) }
+
+        operator fun get(name: String) = byId(name)
+    }
 }

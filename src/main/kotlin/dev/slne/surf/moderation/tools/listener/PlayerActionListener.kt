@@ -1,8 +1,9 @@
 package dev.slne.surf.moderation.tools.listener
 
 import com.github.benmanes.caffeine.cache.Caffeine
-import dev.slne.surf.moderation.tools.service.freezeService
-import dev.slne.surf.moderation.tools.utils.cancel
+import com.sksamuel.aedile.core.expireAfterWrite
+import dev.slne.surf.moderation.tools.service.FreezeService
+import dev.slne.surf.surfapi.bukkit.api.event.cancel
 import dev.slne.surf.surfapi.core.api.messages.adventure.sendText
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
@@ -15,25 +16,21 @@ import org.bukkit.event.player.PlayerInteractEntityEvent
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.player.PlayerMoveEvent
 import java.util.*
-import java.util.concurrent.TimeUnit
+import kotlin.time.Duration.Companion.seconds
 
-class PlayerActionListener : Listener {
+object PlayerActionListener : Listener {
     private val messageCooldown = Caffeine.newBuilder()
-        .expireAfterWrite(5, TimeUnit.SECONDS)
-        .build<UUID, Long>()
+        .expireAfterWrite(5.seconds)
+        .build<UUID, Unit>()
 
     @EventHandler
     fun onMove(event: PlayerMoveEvent) {
+        if (!event.hasChangedBlock()) return
+
         val player = event.player
-
-        if (freezeService.isFrozen(player.uniqueId)) {
-            sendResultMessage(player, "Du bist eingefroren und kannst dich nicht bewegen.")
-
-            if (!event.hasChangedBlock()) {
-                return
-            }
-
+        if (FreezeService.isFrozen(player.uniqueId)) {
             event.cancel()
+            sendResultMessage(player, "Du bist eingefroren und kannst dich nicht bewegen.")
         }
     }
 
@@ -41,9 +38,9 @@ class PlayerActionListener : Listener {
     fun onBlockBreak(event: BlockBreakEvent) {
         val player = event.player
 
-        if (freezeService.isFrozen(player.uniqueId)) {
-            sendResultMessage(player, "Du bist eingefroren und kannst nichts abbauen.")
+        if (FreezeService.isFrozen(player.uniqueId)) {
             event.cancel()
+            sendResultMessage(player, "Du bist eingefroren und kannst nichts abbauen.")
         }
     }
 
@@ -51,9 +48,9 @@ class PlayerActionListener : Listener {
     fun onBlockPlace(event: BlockPlaceEvent) {
         val player = event.player
 
-        if (freezeService.isFrozen(player.uniqueId)) {
-            sendResultMessage(player, "Du bist eingefroren und kannst nichts platzieren.")
+        if (FreezeService.isFrozen(player.uniqueId)) {
             event.cancel()
+            sendResultMessage(player, "Du bist eingefroren und kannst nichts platzieren.")
         }
     }
 
@@ -65,9 +62,9 @@ class PlayerActionListener : Listener {
             return
         }
 
-        if (freezeService.isFrozen(damager.uniqueId)) {
-            sendResultMessage(damager, "Du bist eingefroren und kannst niemanden angreifen.")
+        if (FreezeService.isFrozen(damager.uniqueId)) {
             event.cancel()
+            sendResultMessage(damager, "Du bist eingefroren und kannst niemanden angreifen.")
         }
     }
 
@@ -75,9 +72,9 @@ class PlayerActionListener : Listener {
     fun onInteract(event: PlayerInteractEvent) {
         val player = event.player
 
-        if (freezeService.isFrozen(player.uniqueId)) {
-            sendResultMessage(player, "Du bist eingefroren und kannst nichts benutzen.")
+        if (FreezeService.isFrozen(player.uniqueId)) {
             event.cancel()
+            sendResultMessage(player, "Du bist eingefroren und kannst nichts benutzen.")
         }
     }
 
@@ -85,9 +82,9 @@ class PlayerActionListener : Listener {
     fun onInteract(event: PlayerInteractEntityEvent) {
         val player = event.player
 
-        if (freezeService.isFrozen(player.uniqueId)) {
-            sendResultMessage(player, "Du bist eingefroren und kannst nichts benutzen.")
+        if (FreezeService.isFrozen(player.uniqueId)) {
             event.cancel()
+            sendResultMessage(player, "Du bist eingefroren und kannst nichts benutzen.")
         }
     }
 
@@ -97,18 +94,18 @@ class PlayerActionListener : Listener {
         if (entity !is Player) {
             return
         }
-        if (freezeService.isFrozen(entity.uniqueId)) {
+        if (FreezeService.isFrozen(entity.uniqueId)) {
             event.cancel()
         }
     }
 
     private fun sendResultMessage(player: Player, message: String) {
-        if ((messageCooldown.getIfPresent(player.uniqueId) ?: 0) < System.currentTimeMillis()) {
-            player.sendText {
-                appendPrefix()
-                error(message)
-            }
-            messageCooldown.put(player.uniqueId, System.currentTimeMillis() + 5_000)
+        if (messageCooldown.getIfPresent(player.uniqueId) != null) return
+        messageCooldown.put(player.uniqueId, Unit)
+
+        player.sendText {
+            appendPrefix()
+            error(message)
         }
     }
 }
