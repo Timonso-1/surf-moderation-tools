@@ -8,13 +8,11 @@ import dev.slne.surf.moderation.tools.faq.Faq
 import dev.slne.surf.moderation.tools.plugin
 import dev.slne.surf.moderation.tools.utils.appendArtyPrefix
 import dev.slne.surf.surfapi.bukkit.api.extensions.server
-import dev.slne.surf.surfapi.core.api.messages.Colors
 import dev.slne.surf.surfapi.core.api.messages.adventure.playSound
 import dev.slne.surf.surfapi.core.api.messages.adventure.sendText
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
 import net.kyori.adventure.sound.Sound.Source
-import net.kyori.adventure.text.format.TextColor
 import net.kyori.adventure.text.format.TextDecoration
 import org.bukkit.Sound
 import org.bukkit.entity.Player
@@ -59,9 +57,7 @@ object FaqService {
                         target.sendText {
                             appendArtyPrefix()
                             append {
-                                text("@${target.name}")
-                                decorate(TextDecoration.BOLD)
-                                color(TextColor.color(Colors.VARIABLE_VALUE))
+                                variableValue("@${target.name}", TextDecoration.BOLD)
                             }
                             appendSpace()
                             append(faq.message)
