@@ -14,7 +14,7 @@ dependencies {
 }
 
 surfPaperPluginApi {
-    mainClass("dev.slne.surf.moderation.tools.BukkitMain")
+    mainClass("dev.slne.surf.moderation.tools.PaperMain")
     foliaSupported(true)
     generateLibraryLoader(false)
 

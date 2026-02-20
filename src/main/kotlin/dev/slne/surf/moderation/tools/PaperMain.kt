@@ -7,9 +7,9 @@ import dev.slne.surf.moderation.tools.listener.PlayerActionListener
 import dev.slne.surf.surfapi.bukkit.api.event.register
 import org.bukkit.plugin.java.JavaPlugin
 
-val plugin get() = JavaPlugin.getPlugin(BukkitMain::class.java)
+val plugin get() = JavaPlugin.getPlugin(PaperMain::class.java)
 
-class BukkitMain : SuspendingJavaPlugin() {
+class PaperMain : SuspendingJavaPlugin() {
     override suspend fun onLoadAsync() {
         SurfModerationToolConfig.init()
     }
