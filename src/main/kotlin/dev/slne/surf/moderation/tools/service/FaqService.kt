@@ -56,9 +56,7 @@ object FaqService {
                     launch(plugin.entityDispatcher(target)) {
                         target.sendText {
                             appendArtyPrefix()
-                            append {
-                                variableValue("@${target.name}", TextDecoration.BOLD)
-                            }
+                            variableValue("@${target.name}", TextDecoration.BOLD)
                             appendSpace()
                             append(faq.message)
                         }
