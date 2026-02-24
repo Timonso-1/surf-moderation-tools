@@ -56,17 +56,14 @@ object FaqService {
                     launch(plugin.entityDispatcher(target)) {
                         target.sendText {
                             appendArtyPrefix()
-                            append {
-                                text(target.name)
-                                decorate(TextDecoration.BOLD)
-                            }
+                            variableValue("@${target.name}", TextDecoration.BOLD)
                             appendSpace()
                             append(faq.message)
                         }
 
                         target.playSound(useSelfEmitter = true) {
-                            type(Sound.BLOCK_NOTE_BLOCK_BELL)
-                            source(Source.PLAYER)
+                            type(Sound.ENTITY_CHICKEN_EGG)
+                            source(Source.MASTER)
                             volume(1f)
                             pitch(1f)
                         }
