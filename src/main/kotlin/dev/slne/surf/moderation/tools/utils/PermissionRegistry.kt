@@ -7,6 +7,7 @@ object PermissionRegistry : PermissionRegistry() {
     private const val COMMAND_PREFIX = "$PREFIX.command"
 
     val COMMAND_ROTATE = create("$COMMAND_PREFIX.rotation")
+    val COMMAND_STOP_INTERACTION = create("$COMMAND_PREFIX.stopinteraction")
     val COMMAND_FREEZE = create("$COMMAND_PREFIX.freeze")
     val COMMAND_UNFREEZE = create("$COMMAND_PREFIX.unfreeze")
     val COMMAND_FAQ = create("$COMMAND_PREFIX.faq")

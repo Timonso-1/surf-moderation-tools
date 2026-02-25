@@ -20,6 +20,7 @@ class PaperMain : SuspendingJavaPlugin() {
         rotateCommand()
         freezeCommand()
         unfreezeCommand()
+        stopInteraction()
 
         PlayerActionListener.register()
     }
