@@ -48,7 +48,10 @@ fun freezeCommand() = commandAPICommand("freeze") {
                 val block = world.getBlockAt(location.blockX, y, location.blockZ)
 
                 if (!block.isPassable) {
-                    val tpLocation = block.location.add(0.5, 1.0, 0.5)
+                    val tpLocation = block.location.add(0.5, 1.0, 0.5).apply {
+                        yaw = location.yaw
+                        pitch = location.pitch
+                    }
 
                     val success = targetPlayer.teleportAsync(tpLocation).await()
                     if (!success) {
