@@ -20,35 +20,33 @@ provides quick administrative and support functions directly in-game.
     - Permission: ``surf.moderation.tools.command.unfreeze``
 
 - **`/faq <FAQ> [Player]`**
-    - Permission: ``surf.moderation.tools.command.faq``
-        - 📄 Send pre-defined answers to frequently asked questions.
+  📄 Send pre-defined answers to frequently asked questions.
+  - Permission: ``surf.moderation.tools.command.faq``
+  - If no player is specified, the FAQ is sent to all relevant viewers.
+  - If a player is specified, only that player receives the FAQ **and gets pinged** with a notification sound.
 
-            - If no player is specified, the FAQ is sent to all relevant viewers.
-            - If a player is specified, only that player receives the FAQ **and gets pinged** with a notification sound.
+  <details>
+    <summary>📄 Current FAQs (click to expand)</summary>
 
-      <details>
-        <summary>📄 Current FAQs (click to expand)</summary>
-
-        - Ask
-        - BenefitsAsVeteran
-        - ClanInformation
-        - HowToCreatePlot
-        - HowToInstallVoiceChat
-        - HowToJoin
-        - HowToOpenTicket
-        - NextEvent
-        - ReadTheDocs
-        - ReportBug
-        - ReportPlayer
-        - Rulebook
-        - ServerModpack
-        - SurvivalDowntime
-        - TakePartInEvent
-        - WhyNoElytraInTheEnd
-        - WhyNoTeleportation
-        - WhyNoVillagers
-      </details>
-
+    - Ask
+    - BenefitsAsVeteran
+    - ClanInformation
+    - HowToCreatePlot
+    - HowToInstallVoiceChat
+    - HowToJoin
+    - HowToOpenTicket
+    - NextEvent
+    - ReadTheDocs
+    - ReportBug
+    - ReportPlayer
+    - Rulebook
+    - ServerModpack
+    - SurvivalDowntime
+    - TakePartInEvent
+    - WhyNoElytraInTheEnd
+    - WhyNoTeleportation
+    - WhyNoVillagers
+  </details>
 ### Admin
 
 - **`/surfmodtools setMessageCooldown <time(ms)>`**   
