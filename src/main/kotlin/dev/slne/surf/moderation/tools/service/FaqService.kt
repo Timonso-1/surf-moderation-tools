@@ -53,7 +53,7 @@ object FaqService {
         } else {
             executor.sendText {
                 appendSuccessPrefix()
-                variableValue(faq.toString())
+                variableValue(faq.id)
                 success(" wurde erfolgreich gesendet!")
             }
             supervisorScope {
