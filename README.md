@@ -9,41 +9,45 @@ provides quick administrative and support functions directly in-game.
 
 - **`/rotate <Player>`**   
   🔄 Rotate a player without teleporting them.
+    - Permission: ``surf.moderation.tools.command.rotation``
 
 - **`/freeze <Player> <time<s,m,h,d,w>>`**   
   ❄️ Freeze a player for a specific duration.
+    - Permission: ``surf.moderation.tools.command.freeze``
 
 - **`/unfreeze <Player>`**   
   ☀️ Unfreeze a player.
+    - Permission: ``surf.moderation.tools.command.unfreeze``
 
-- **`/faq <FAQ> [Player]`**  
-  📄 Send pre-defined answers to frequently asked questions.
+- **`/faq <FAQ> [Player]`**
+    - Permission: ``surf.moderation.tools.command.faq``
+        - 📄 Send pre-defined answers to frequently asked questions.
 
-    - If no player is specified, the FAQ is sent to all relevant viewers.
-    - If a player is specified, only that player receives the FAQ **and gets pinged** with a notification sound.
+            - If no player is specified, the FAQ is sent to all relevant viewers.
+            - If a player is specified, only that player receives the FAQ **and gets pinged** with a notification sound.
 
-  <details>
-    <summary>📄 Current FAQs (click to expand)</summary>
+      <details>
+        <summary>📄 Current FAQs (click to expand)</summary>
 
-    - Ask
-    - BenefitsAsVeteran
-    - ClanInformation
-    - HowToCreatePlot
-    - HowToInstallVoiceChat
-    - HowToJoin
-    - HowToOpenTicket
-    - NextEvent
-    - ReadTheDocs
-    - ReportBug
-    - ReportPlayer
-    - Rulebook
-    - ServerModpack
-    - SurvivalDowntime
-    - TakePartInEvent
-    - WhyNoElytraInTheEnd
-    - WhyNoTeleportation
-    - WhyNoVillagers
-  </details>
+        - Ask
+        - BenefitsAsVeteran
+        - ClanInformation
+        - HowToCreatePlot
+        - HowToInstallVoiceChat
+        - HowToJoin
+        - HowToOpenTicket
+        - NextEvent
+        - ReadTheDocs
+        - ReportBug
+        - ReportPlayer
+        - Rulebook
+        - ServerModpack
+        - SurvivalDowntime
+        - TakePartInEvent
+        - WhyNoElytraInTheEnd
+        - WhyNoTeleportation
+        - WhyNoVillagers
+      </details>
 
 ### Admin
 
@@ -59,7 +63,7 @@ provides quick administrative and support functions directly in-game.
 2. Ensure the following dependencies are installed:
     - [Surf API](https://github.com/SLNE-Development/surf-api)
     - [Surf Bitmap Provider](https://github.com/SLNE-Development/surf-bitmap-provider)
-3. Make sure **Java 24** is installed.
+3. Make sure **Java 25** is installed.
 4. Place the plugin in your server's `plugins` folder and restart the server.
 
 ## ⚙️ Configuration

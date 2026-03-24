@@ -13,7 +13,6 @@ import dev.slne.surf.surfapi.core.api.messages.adventure.sendText
 import kotlinx.coroutines.future.await
 import kotlinx.coroutines.withContext
 import org.bukkit.entity.Player
-import kotlin.time.Duration
 
 
 fun freezeCommand() = commandAPICommand("freeze") {
@@ -43,9 +42,25 @@ fun freezeCommand() = commandAPICommand("freeze") {
             val location = targetPlayer.location
             val world = location.world
 
-            val teleported = targetPlayer.teleportAsync(location.toHighestLocation()).await()
+            var found = false
 
-            if (!teleported) {
+            for (y in location.blockY downTo world.minHeight) {
+                val block = world.getBlockAt(location.blockX, y, location.blockZ)
+
+                if (!block.isPassable) {
+                    val tpLocation = block.location.add(0.5, 1.0, 0.5)
+
+                    val success = targetPlayer.teleportAsync(tpLocation).await()
+                    if (!success) {
+                        targetPlayer.teleportAsync(world.spawnLocation).await()
+                    }
+
+                    found = true
+                    break
+                }
+            }
+
+            if (!found) {
                 targetPlayer.teleportAsync(world.spawnLocation).await()
             }
         }

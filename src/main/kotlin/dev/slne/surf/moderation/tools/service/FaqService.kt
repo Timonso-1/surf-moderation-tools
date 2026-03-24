@@ -51,6 +51,11 @@ object FaqService {
                 append(faq.message)
             }
         } else {
+            executor.sendText {
+                appendSuccessPrefix()
+                variableValue(faq.toString())
+                success(" wurde erfolgreich gesendet!")
+            }
             supervisorScope {
                 for (target in targets) {
                     launch(plugin.entityDispatcher(target)) {

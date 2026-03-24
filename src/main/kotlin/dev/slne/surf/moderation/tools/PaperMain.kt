@@ -10,6 +10,7 @@ import org.bukkit.plugin.java.JavaPlugin
 val plugin get() = JavaPlugin.getPlugin(PaperMain::class.java)
 
 class PaperMain : SuspendingJavaPlugin() {
+
     override suspend fun onLoadAsync() {
         SurfModerationToolConfig.init()
     }
