@@ -24,9 +24,10 @@ provides quick administrative and support functions directly in-game.
   - Permission: ``surf.moderation.tools.command.faq``
   - If no player is specified, the FAQ is sent to all relevant viewers.
   - If a player is specified, only that player receives the FAQ **and gets pinged** with a notification sound.
+  - Note: The `/faq` command expects the kebab-case FAQ **id** (for example, ``veteran-benefits``, ``how-to-join``). Use in-game tab-completion to see the exact available FAQ ids. The list below shows the FAQ topics, not necessarily the literal ids you type.
 
   <details>
-    <summary>📄 Current FAQs (click to expand)</summary>
+    <summary>📄 Current FAQ topics (click to expand)</summary>
 
     - Ask
     - BenefitsAsVeteran
