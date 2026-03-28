@@ -104,7 +104,7 @@ object PlayerActionListener : Listener {
         messageCooldown.put(player.uniqueId, Unit)
 
         player.sendText {
-            appendPrefix()
+            appendErrorPrefix()
             error(message)
         }
     }

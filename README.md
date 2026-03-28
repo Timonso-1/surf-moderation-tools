@@ -9,21 +9,25 @@ provides quick administrative and support functions directly in-game.
 
 - **`/rotate <Player>`**   
   🔄 Rotate a player without teleporting them.
+    - Permission: ``surf.moderation.tools.command.rotation``
 
 - **`/freeze <Player> <time<s,m,h,d,w>>`**   
   ❄️ Freeze a player for a specific duration.
+    - Permission: ``surf.moderation.tools.command.freeze``
 
 - **`/unfreeze <Player>`**   
   ☀️ Unfreeze a player.
+    - Permission: ``surf.moderation.tools.command.unfreeze``
 
-- **`/faq <FAQ> [Player]`**  
+- **`/faq <FAQ> [Player]`**
   📄 Send pre-defined answers to frequently asked questions.
-
-    - If no player is specified, the FAQ is sent to all relevant viewers.
-    - If a player is specified, only that player receives the FAQ **and gets pinged** with a notification sound.
+  - Permission: ``surf.moderation.tools.command.faq``
+  - If no player is specified, the FAQ is sent to all relevant viewers.
+  - If a player is specified, only that player receives the FAQ **and gets pinged** with a notification sound.
+  - Note: The `/faq` command expects the kebab-case FAQ **id** (for example, ``veteran-benefits``, ``how-to-join``). Use in-game tab-completion to see the exact available FAQ ids. The list below shows the FAQ topics, not necessarily the literal ids you type.
 
   <details>
-    <summary>📄 Current FAQs (click to expand)</summary>
+    <summary>📄 Current FAQ topics (click to expand)</summary>
 
     - Ask
     - BenefitsAsVeteran
@@ -44,7 +48,6 @@ provides quick administrative and support functions directly in-game.
     - WhyNoTeleportation
     - WhyNoVillagers
   </details>
-
 ### Admin
 
 - **`/surfmodtools setMessageCooldown <time(ms)>`**   
@@ -59,7 +62,7 @@ provides quick administrative and support functions directly in-game.
 2. Ensure the following dependencies are installed:
     - [Surf API](https://github.com/SLNE-Development/surf-api)
     - [Surf Bitmap Provider](https://github.com/SLNE-Development/surf-bitmap-provider)
-3. Make sure **Java 24** is installed.
+3. Make sure **Java 25** is installed.
 4. Place the plugin in your server's `plugins` folder and restart the server.
 
 ## ⚙️ Configuration
