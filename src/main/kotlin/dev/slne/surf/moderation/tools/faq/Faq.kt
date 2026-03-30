@@ -210,7 +210,7 @@ enum class Faq(val id: String, message: SurfComponentBuilder.() -> Unit) {
     }),
 
     WHEN_DOES_THE_END_OPEN("when-does-the-end-open", {
-       text("Wann das End öffnet, ist noch unklar. Falls es aber feststeht, wird es in den Server-Updates auf dem")
+        text("Wann das End öffnet, ist noch unklar. Falls es aber feststeht, wird es in den Server-Updates auf dem")
         appendSpace()
         append {
             variableValue("Discord")
