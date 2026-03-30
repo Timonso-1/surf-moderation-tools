@@ -19,6 +19,10 @@ provides quick administrative and support functions directly in-game.
   ☀️ Unfreeze a player.
     - Permission: ``surf.moderation.tools.command.unfreeze``
 
+- **`/pingPlayer <Player> <WithMessage>`**   
+  - 📍 Ping a player with a auditory indicator and an optional message.
+  - Permission: ``surf.moderation.tools.command.pingPlayer``
+
 - **`/faq <FAQ> [Player]`**
   📄 Send pre-defined answers to frequently asked questions.
   - Permission: ``surf.moderation.tools.command.faq``

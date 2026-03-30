@@ -22,6 +22,7 @@ class PaperMain : SuspendingJavaPlugin() {
         freezeCommand()
         unfreezeCommand()
         stopInteraction()
+        pingPlayerCommand()
 
         PlayerActionListener.register()
     }
