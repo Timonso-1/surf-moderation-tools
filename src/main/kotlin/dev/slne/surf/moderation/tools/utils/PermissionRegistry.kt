@@ -11,5 +11,6 @@ object PermissionRegistry : PermissionRegistry() {
     val COMMAND_FREEZE = create("$COMMAND_PREFIX.freeze")
     val COMMAND_UNFREEZE = create("$COMMAND_PREFIX.unfreeze")
     val COMMAND_FAQ = create("$COMMAND_PREFIX.faq")
+    val COMMAND_PING_PLAYER = create("$COMMAND_PREFIX.pingplayer")
     val COMMAND_SURF_MOD_TOOLS = create("$COMMAND_PREFIX.surfmodtools")
 }
