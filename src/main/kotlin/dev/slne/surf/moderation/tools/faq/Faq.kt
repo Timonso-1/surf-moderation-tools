@@ -11,36 +11,24 @@ enum class Faq(val id: String, message: SurfComponentBuilder.() -> Unit) {
         text("Stell deine Frage direkt und hab kurz Geduld, bis du eine Antwort bekommst.")
     }),
 
-    VETERAN_BENEFITS("veteran-benefits", {
-        text("Veteranen haben den Vorteil einer Priority Queue und kommen dadurch schneller auf den Server. ")
-        text("Wie du den Rang bekommst, erfährst du")
+    CUSTOM_ENCHANTMENTS("custom-enchantments", {
+        append {
+            variableValue("Hier")
+            hoverEvent(buildText { spacer("Klicke, um zur Informationsseite zu gelangen.") })
+            clickOpensUrl("https://server.castcrafter.de/custom-enchantments.html")
+        }
+        text(" erfährst du alles über die Custom Enchantments.")
+    }),
+
+    FEATURES_SURVIVAL_SERVER("features-survival-server", {
+        text("Der Survival Server hat einige Features, welche du")
         appendSpace()
         append {
             variableValue("hier")
             hoverEvent(buildText { spacer("Klicke, um zur Informationsseite zu gelangen.") })
-            clickOpensUrl("https://server.castcrafter.de/faq.html#veteran-info")
+            clickOpensUrl("https://server.castcrafter.de/features.html")
         }
-        text(".")
-    }),
-
-    CLAN_INFORMATION("clan-info", {
-        text("Du möchtest mehr über Clans wissen?")
-        appendSpace()
-        append {
-            variableValue("Hier")
-            hoverEvent(buildText { spacer("Klicke, um zur Informationsseite zu gelangen.") })
-            clickOpensUrl("https://server.castcrafter.de/clan-more-info")
-        }
-        text(" findest du eine Übersicht mit zusätzlichen Informationen.")
-    }),
-
-    HOW_TO_CREATE_PLOT("how-to-create-plot", {
-        append {
-            variableValue("Hier")
-            hoverEvent(buildText { spacer("Klicke, um zur Informationsseite zu gelangen.") })
-            clickOpensUrl("https://server.castcrafter.de/plots-homepage.html")
-        }
-        text(" erfährst du, wie du ein Grundstück erstellst.")
+        text(" einsehen kannst.")
     }),
 
     HOW_TO_INSTALL_VOICE_CHAT("how-to-install-voice-chat", {
@@ -74,6 +62,44 @@ enum class Faq(val id: String, message: SurfComponentBuilder.() -> Unit) {
         text(".")
     }),
 
+    INFORMATION_ABOUT_THE_CLAN_SYSTEM("information-about-the-clan-system", {
+        text("Du möchtest mehr über Clans wissen?")
+        appendSpace()
+        append {
+            variableValue("Hier")
+            hoverEvent(buildText { spacer("Klicke, um zur Informationsseite zu gelangen.") })
+            clickOpensUrl("https://server.castcrafter.de/clan-more-info")
+        }
+        text(" findest du eine Übersicht mit zusätzlichen Informationen.")
+    }),
+
+    INFORMATION_ABOUT_THE_EVENT_SERVER("information-about-the-event-server", {
+        append {
+            variableValue("Hier")
+            hoverEvent(buildText { spacer("Klicke, um zur Informationsseite zu gelangen.") })
+            clickOpensUrl("https://server.castcrafter.de/event-server.html")
+        }
+        text(" erfährst du alles über den Event-Server.")
+    }),
+
+    INFORMATION_ABOUT_THE_PLOTS("information-about-the-plots", {
+        append {
+            variableValue("Hier")
+            hoverEvent(buildText { spacer("Klicke, um zur Informationsseite zu gelangen.") })
+            clickOpensUrl("https://server.castcrafter.de/plots-homepage.html")
+        }
+        text(" erfährst du alles über das Plotsystem.")
+    }),
+
+    INFORMATION_ABOUT_THE_SURVIVAL_SERVER("information-about-the-survival-server", {
+        append {
+            variableValue("Hier")
+            hoverEvent(buildText { spacer("Klicke, um zur Informationsseite zu gelangen.") })
+            clickOpensUrl("https://server.castcrafter.de/survival-server.html")
+        }
+        text(" erfährst du alles über den Survival-Server.")
+    }),
+
     NEXT_EVENT("next-event", {
         text("Wenn ein Event geplant ist, wird es im")
         appendSpace()
@@ -90,6 +116,10 @@ enum class Faq(val id: String, message: SurfComponentBuilder.() -> Unit) {
             clickOpensUrl("https://www.twitch.tv/castcrafter")
         }
         text(" angekündigt.")
+    }),
+
+    PATIENCE("patience", {
+        text("Wenn dir nicht sofort geantwortet wird, hab bitte etwas Geduld. Wir machen das alles nur in unserer Freizeit und freiwillig.")
     }),
 
     READ_THE_DOCS("read-the-docs", {
@@ -145,15 +175,13 @@ enum class Faq(val id: String, message: SurfComponentBuilder.() -> Unit) {
         text(" kannst du das Server-Modpack herunterladen.")
     }),
 
-    SURVIVAL_DOWNTIME("survival-downtime", {
-        text("Der 1.21-Survival-Server ist zu Ende. ")
-        text("Wann der neue Survival-Server startet, steht noch nicht fest – wir arbeiten aber bereits daran. ")
-        text("Alle Updates und Ankündigungen findest du")
+    SURVIVAL_EVENTS("survival-events", {
+        text("Welche Survival-Events es auf dem Survival-Server gibt und wann diese stattfinden, erfährst du")
         appendSpace()
         append {
             variableValue("hier")
-            hoverEvent(buildText { spacer("Klicke, um zum Discord zu gelangen.") })
-            clickOpensUrl("https://discord.com/channels/133198459531558912/980810495877607524")
+            hoverEvent(buildText { spacer("Klicke, um zur Informationsseite zu gelangen.") })
+            clickOpensUrl("https://server.castcrafter.de/events.html")
         }
         text(".")
     }),
@@ -167,6 +195,40 @@ enum class Faq(val id: String, message: SurfComponentBuilder.() -> Unit) {
             clickOpensUrl("https://server.castcrafter.de/how-to-take-part-in-an-event")
         }
         text(".")
+    }),
+
+    VETERAN_BENEFITS("veteran-benefits", {
+        text("Veteranen haben den Vorteil einer Priority Queue und kommen dadurch schneller auf den Server. ")
+        text("Wie du den Rang bekommst, erfährst du")
+        appendSpace()
+        append {
+            variableValue("hier")
+            hoverEvent(buildText { spacer("Klicke, um zur Informationsseite zu gelangen.") })
+            clickOpensUrl("https://server.castcrafter.de/faq.html#veteran-info")
+        }
+        text(".")
+    }),
+
+    WHEN_DOES_THE_END_OPEN("when-does-the-end-open", {
+       text("Wann das End öffnet, ist noch unklar. Falls es aber feststeht, wird es in den Server-Updates auf dem")
+        appendSpace()
+        append {
+            variableValue("Discord")
+            hoverEvent(buildText { spacer("Klicke, um zum Discord zu gelangen.") })
+            clickOpensUrl("https://discord.com/channels/133198459531558912/980810495877607524")
+        }
+        text(" angekündigt.")
+    }),
+
+    WHEN_DOES_THE_NETHER_OPEN("when-does-the-nether-open", {
+        text("Wann der Nether öffnet, ist noch unklar. Falls es aber feststeht, wird es in den Server-Updates auf dem")
+        appendSpace()
+        append {
+            variableValue("Discord")
+            hoverEvent(buildText { spacer("Klicke, um zum Discord zu gelangen.") })
+            clickOpensUrl("https://discord.com/channels/133198459531558912/980810495877607524")
+        }
+        text(" angekündigt.")
     }),
 
     WHY_NO_ELYTRA_IN_THE_END("why-no-elytra-in-the-end", {
