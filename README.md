@@ -33,24 +33,31 @@ provides quick administrative and support functions directly in-game.
   <details>
     <summary>📄 Current FAQ topics (click to expand)</summary>
 
-    - Ask
-    - BenefitsAsVeteran
-    - ClanInformation
-    - HowToCreatePlot
-    - HowToInstallVoiceChat
-    - HowToJoin
-    - HowToOpenTicket
-    - NextEvent
-    - ReadTheDocs
-    - ReportBug
-    - ReportPlayer
-    - Rulebook
-    - ServerModpack
-    - SurvivalDowntime
-    - TakePartInEvent
-    - WhyNoElytraInTheEnd
-    - WhyNoTeleportation
-    - WhyNoVillagers
+    - ask
+    - custom-enchantments
+    - features-survival-server
+    - how-to-install-voice-chat
+    - how-to-join
+    - how-to-open-ticket
+    - information-about-the-clan-system
+    - information-about-the-event-server
+    - information-about-the-plots
+    - information-about-the-survival-server
+    - next-event
+    - patience
+    - read-the-docs
+    - report-bug
+    - report-player
+    - rulebook
+    - server-modpack
+    - survival-events
+    - take-part-in-event
+    - veteran-benefits
+    - when-does-the-end-open
+    - when-does-the-nether-open
+    - why-no-elytra-in-the-end
+    - why-no-teleportation
+    - why-no-villagers
   </details>
 ### Admin
 
