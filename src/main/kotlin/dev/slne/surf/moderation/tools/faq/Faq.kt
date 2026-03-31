@@ -28,7 +28,8 @@ enum class Faq(val id: String, message: SurfComponentBuilder.() -> Unit) {
             hoverEvent(buildText { spacer("Klicke, um zur Informationsseite zu gelangen.") })
             clickOpensUrl("https://server.castcrafter.de/features.html")
         }
-        text(" einsehen kannst.")
+        appendSpace()
+        text("einsehen kannst.")
     }),
 
     HOW_TO_INSTALL_VOICE_CHAT("how-to-install-voice-chat", {
@@ -37,7 +38,8 @@ enum class Faq(val id: String, message: SurfComponentBuilder.() -> Unit) {
             hoverEvent(buildText { spacer("Klicke, um zur Informationsseite zu gelangen.") })
             clickOpensUrl("https://server.castcrafter.de/faq.html#install-voicechat")
         }
-        text(" erfährst du, wie du den Voice Chat installierst.")
+        appendSpace()
+        text("erfährst du, wie du den Voice Chat installierst.")
     }),
 
     HOW_TO_JOIN("how-to-join", {
@@ -70,7 +72,8 @@ enum class Faq(val id: String, message: SurfComponentBuilder.() -> Unit) {
             hoverEvent(buildText { spacer("Klicke, um zur Informationsseite zu gelangen.") })
             clickOpensUrl("https://server.castcrafter.de/clan-more-info")
         }
-        text(" findest du eine Übersicht mit zusätzlichen Informationen.")
+        appendSpace()
+        text("findest du eine Übersicht mit zusätzlichen Informationen.")
     }),
 
     INFORMATION_ABOUT_THE_EVENT_SERVER("information-about-the-event-server", {
@@ -79,7 +82,8 @@ enum class Faq(val id: String, message: SurfComponentBuilder.() -> Unit) {
             hoverEvent(buildText { spacer("Klicke, um zur Informationsseite zu gelangen.") })
             clickOpensUrl("https://server.castcrafter.de/event-server.html")
         }
-        text(" erfährst du alles über den Event-Server.")
+        appendSpace()
+        text("erfährst du alles über den Event-Server.")
     }),
 
     INFORMATION_ABOUT_THE_PLOTS("information-about-the-plots", {
@@ -88,7 +92,8 @@ enum class Faq(val id: String, message: SurfComponentBuilder.() -> Unit) {
             hoverEvent(buildText { spacer("Klicke, um zur Informationsseite zu gelangen.") })
             clickOpensUrl("https://server.castcrafter.de/plots-homepage.html")
         }
-        text(" erfährst du alles über das Plotsystem.")
+        appendSpace()
+        text("erfährst du alles über das Plotsystem.")
     }),
 
     INFORMATION_ABOUT_THE_SURVIVAL_SERVER("information-about-the-survival-server", {
@@ -97,7 +102,8 @@ enum class Faq(val id: String, message: SurfComponentBuilder.() -> Unit) {
             hoverEvent(buildText { spacer("Klicke, um zur Informationsseite zu gelangen.") })
             clickOpensUrl("https://server.castcrafter.de/survival-server.html")
         }
-        text(" erfährst du alles über den Survival-Server.")
+        appendSpace()
+        text("erfährst du alles über den Survival-Server.")
     }),
 
     NEXT_EVENT("next-event", {
@@ -108,14 +114,16 @@ enum class Faq(val id: String, message: SurfComponentBuilder.() -> Unit) {
             hoverEvent(buildText { spacer("Klicke, um zum Discord zu gelangen.") })
             clickOpensUrl("https://discord.com/channels/133198459531558912/980810495877607524")
         }
-        text(" oder von CastCrafter im")
+        appendSpace()
+        text("oder von CastCrafter im")
         appendSpace()
         append {
             variableValue("Stream")
             hoverEvent(buildText { spacer("Klicke, um zum Twitch-Kanal zu gelangen.") })
             clickOpensUrl("https://www.twitch.tv/castcrafter")
         }
-        text(" angekündigt.")
+        appendSpace()
+        text("angekündigt.")
     }),
 
     PATIENCE("patience", {
@@ -130,7 +138,8 @@ enum class Faq(val id: String, message: SurfComponentBuilder.() -> Unit) {
             hoverEvent(buildText { spacer("Klicke, um auf die Informationsseite zu gelangen.") })
             clickOpensUrl("https://server.castcrafter.de/community-server-landing-page")
         }
-        text(" beantwortet.")
+        appendSpace()
+        text("beantwortet.")
     }),
 
     REPORT_BUG("report-bug", {
@@ -141,7 +150,8 @@ enum class Faq(val id: String, message: SurfComponentBuilder.() -> Unit) {
             hoverEvent(buildText { spacer("Klicke, um auf die Informationsseite zu gelangen.") })
             clickOpensUrl("https://server.castcrafter.de/support#bugreport-ticket")
         }
-        text(" erfährst du, wie du ihn melden kannst, um dem Server zu helfen.")
+        appendSpace()
+        text("erfährst du, wie du ihn melden kannst, um dem Server zu helfen.")
     }),
 
     REPORT_PLAYER("report-player", {
@@ -152,7 +162,8 @@ enum class Faq(val id: String, message: SurfComponentBuilder.() -> Unit) {
             hoverEvent(buildText { spacer("Klicke, um zur Informationsseite zu gelangen.") })
             clickOpensUrl("https://server.castcrafter.de/support#report-ticket")
         }
-        text(" zeigen wir dir, wie das geht.")
+        appendSpace()
+        text("zeigen wir dir, wie das geht.")
     }),
 
     RULEBOOK("rulebook", {
@@ -172,7 +183,8 @@ enum class Faq(val id: String, message: SurfComponentBuilder.() -> Unit) {
             hoverEvent(buildText { spacer("Klicke, um auf die Downloadseite zu gelangen.") })
             clickOpensUrl("https://modrinth.com/modpack/castcrafter-survival-server")
         }
-        text(" kannst du das Server-Modpack herunterladen.")
+        appendSpace()
+        text("kannst du das Server-Modpack herunterladen.")
     }),
 
     SURVIVAL_EVENTS("survival-events", {
@@ -217,7 +229,8 @@ enum class Faq(val id: String, message: SurfComponentBuilder.() -> Unit) {
             hoverEvent(buildText { spacer("Klicke, um zum Discord zu gelangen.") })
             clickOpensUrl("https://discord.com/channels/133198459531558912/980810495877607524")
         }
-        text(" angekündigt.")
+        appendSpace()
+        text("angekündigt.")
     }),
 
     WHEN_DOES_THE_NETHER_OPEN("when-does-the-nether-open", {
@@ -228,7 +241,8 @@ enum class Faq(val id: String, message: SurfComponentBuilder.() -> Unit) {
             hoverEvent(buildText { spacer("Klicke, um zum Discord zu gelangen.") })
             clickOpensUrl("https://discord.com/channels/133198459531558912/980810495877607524")
         }
-        text(" angekündigt.")
+        appendSpace()
+        text("angekündigt.")
     }),
 
     WHY_NO_ELYTRA_IN_THE_END("why-no-elytra-in-the-end", {
@@ -239,7 +253,8 @@ enum class Faq(val id: String, message: SurfComponentBuilder.() -> Unit) {
             hoverEvent(buildText { spacer("Klicke, um zur Informationsseite zu gelangen.") })
             clickOpensUrl("https://server.castcrafter.de/faq#why-no-elytra-in-end")
         }
-        text(" findest du die Antwort.")
+        appendSpace()
+        text("findest du die Antwort.")
     }),
 
     WHY_NO_TELEPORTATION("why-no-teleportation", {
@@ -250,7 +265,8 @@ enum class Faq(val id: String, message: SurfComponentBuilder.() -> Unit) {
             hoverEvent(buildText { spacer("Klicke, um zur Informationsseite zu gelangen.") })
             clickOpensUrl("https://server.castcrafter.de/faq#why-no-teleportation")
         }
-        text(" findest du die Antwort.")
+        appendSpace()
+        text("findest du die Antwort.")
     }),
 
     WHY_NO_VILLAGERS("why-no-villagers", {
@@ -261,7 +277,8 @@ enum class Faq(val id: String, message: SurfComponentBuilder.() -> Unit) {
             hoverEvent(buildText { spacer("Klicke, um zur Informationsseite zu gelangen.") })
             clickOpensUrl("https://server.castcrafter.de/specials#no-villagers")
         }
-        text(" findest du die Antwort.")
+        appendSpace()
+        text("findest du die Antwort.")
     });
 
     val message = SurfComponentBuilder(message)
