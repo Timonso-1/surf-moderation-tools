@@ -232,15 +232,15 @@ enum class Faq(val id: String, message: SurfComponentBuilder.() -> Unit) {
     }),
 
     WHY_NO_ELYTRA_IN_THE_END("why-no-elytra-in-the-end", {
-        text("Du fragst dich, warum es im End keine Elytren gibt?")
-        appendSpace()
-        append {
-            variableValue("Hier")
-            hoverEvent(buildText { spacer("Klicke, um zur Informationsseite zu gelangen.") })
-            clickOpensUrl("https://server.castcrafter.de/faq#why-no-elytra-in-end")
-        }
-        text(" findest du die Antwort.")
-    }),
+    text("Du fragst dich, warum man im End nicht mit Elytren fliegen kann?")
+    appendSpace()
+    append {
+        variableValue("Hier")
+        hoverEvent(buildText { spacer("Klicke, um zur Informationsseite zu gelangen.") })
+        clickOpensUrl("https://server.castcrafter.de/faq#why-no-elytra-in-end")
+    }
+    text(" findest du die Antwort.")
+})
 
     WHY_NO_TELEPORTATION("why-no-teleportation", {
         text("Du fragst dich, warum es auf dem Server keine Teleportation gibt?")
