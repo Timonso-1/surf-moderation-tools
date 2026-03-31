@@ -119,7 +119,7 @@ enum class Faq(val id: String, message: SurfComponentBuilder.() -> Unit) {
     }),
 
     PATIENCE("patience", {
-        text("Wenn dir nicht sofort geantwortet wird, hab bitte etwas Geduld. Wir machen das alles nur in unserer Freizeit und freiwillig.")
+        text("Wenn dir nicht sofort geantwortet wird, habe bitte etwas Geduld. Wir machen das alles in unserer Freizeit und ehrenamtlich.")
     }),
 
     READ_THE_DOCS("read-the-docs", {
