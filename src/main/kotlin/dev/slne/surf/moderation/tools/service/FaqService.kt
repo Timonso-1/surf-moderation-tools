@@ -3,13 +3,13 @@ package dev.slne.surf.moderation.tools.service
 import com.github.benmanes.caffeine.cache.Caffeine
 import com.github.shynixn.mccoroutine.folia.entityDispatcher
 import com.sksamuel.aedile.core.expireAfterWrite
+import dev.slne.surf.api.core.messages.adventure.playSound
+import dev.slne.surf.api.core.messages.adventure.sendText
+import dev.slne.surf.api.paper.extensions.server
 import dev.slne.surf.moderation.tools.config.SurfModerationToolConfig
 import dev.slne.surf.moderation.tools.faq.Faq
 import dev.slne.surf.moderation.tools.plugin
 import dev.slne.surf.moderation.tools.utils.appendArtyPrefix
-import dev.slne.surf.surfapi.bukkit.api.extensions.server
-import dev.slne.surf.surfapi.core.api.messages.adventure.playSound
-import dev.slne.surf.surfapi.core.api.messages.adventure.sendText
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
 import net.kyori.adventure.sound.Sound.Source

@@ -4,12 +4,12 @@ import com.github.shynixn.mccoroutine.folia.entityDispatcher
 import dev.jorel.commandapi.kotlindsl.commandAPICommand
 import dev.jorel.commandapi.kotlindsl.entitySelectorArgumentOnePlayer
 import dev.jorel.commandapi.kotlindsl.getValue
+import dev.slne.surf.api.core.messages.adventure.sendText
+import dev.slne.surf.api.paper.command.executors.anyExecutorSuspend
 import dev.slne.surf.moderation.tools.plugin
 import dev.slne.surf.moderation.tools.service.FreezeService
 import dev.slne.surf.moderation.tools.utils.PermissionRegistry
 import dev.slne.surf.moderation.tools.utils.durationArgument
-import dev.slne.surf.surfapi.bukkit.api.command.executors.anyExecutorSuspend
-import dev.slne.surf.surfapi.core.api.messages.adventure.sendText
 import kotlinx.coroutines.future.await
 import kotlinx.coroutines.withContext
 import org.bukkit.entity.Player

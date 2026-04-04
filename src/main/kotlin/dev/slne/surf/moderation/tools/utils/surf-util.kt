@@ -1,7 +1,7 @@
 package dev.slne.surf.moderation.tools.utils
 
+import dev.slne.surf.api.core.messages.builder.SurfComponentBuilder
 import dev.slne.surf.bitmap.common.provider.BitmapProvider
-import dev.slne.surf.surfapi.core.api.messages.builder.SurfComponentBuilder
 import net.kyori.adventure.text.format.ShadowColor
 import net.kyori.adventure.text.format.TextColor
 

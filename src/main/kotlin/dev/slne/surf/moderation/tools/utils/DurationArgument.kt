@@ -10,7 +10,7 @@ import dev.jorel.commandapi.arguments.Argument
 import dev.jorel.commandapi.arguments.ArgumentSuggestions
 import dev.jorel.commandapi.arguments.CustomArgument
 import dev.jorel.commandapi.arguments.StringArgument
-import dev.slne.surf.surfapi.core.api.util.object2IntMapOf
+import dev.slne.surf.api.core.util.object2IntMapOf
 import org.bukkit.command.CommandSender
 import kotlin.math.round
 import kotlin.time.Duration

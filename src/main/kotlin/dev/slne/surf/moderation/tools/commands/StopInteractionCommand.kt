@@ -3,9 +3,9 @@ package dev.slne.surf.moderation.tools.commands
 import dev.jorel.commandapi.kotlindsl.commandAPICommand
 import dev.jorel.commandapi.kotlindsl.entitySelectorArgumentOnePlayer
 import dev.jorel.commandapi.kotlindsl.getValue
+import dev.slne.surf.api.core.messages.adventure.sendText
+import dev.slne.surf.api.paper.command.executors.anyExecutorSuspend
 import dev.slne.surf.moderation.tools.utils.PermissionRegistry
-import dev.slne.surf.surfapi.bukkit.api.command.executors.anyExecutorSuspend
-import dev.slne.surf.surfapi.core.api.messages.adventure.sendText
 import io.papermc.paper.dialog.Dialog
 import org.bukkit.entity.Player
 

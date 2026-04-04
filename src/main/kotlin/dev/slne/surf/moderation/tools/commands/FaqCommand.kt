@@ -3,11 +3,11 @@ package dev.slne.surf.moderation.tools.commands
 import dev.jorel.commandapi.kotlindsl.commandAPICommand
 import dev.jorel.commandapi.kotlindsl.entitySelectorArgumentManyPlayers
 import dev.jorel.commandapi.kotlindsl.getValue
+import dev.slne.surf.api.paper.command.executors.playerExecutorSuspend
 import dev.slne.surf.moderation.tools.commands.argument.faqArgument
 import dev.slne.surf.moderation.tools.faq.Faq
 import dev.slne.surf.moderation.tools.service.FaqService
 import dev.slne.surf.moderation.tools.utils.PermissionRegistry
-import dev.slne.surf.surfapi.bukkit.api.command.executors.playerExecutorSuspend
 import org.bukkit.entity.Player
 
 fun faqCommand() = commandAPICommand("faq") {

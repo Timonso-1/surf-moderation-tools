@@ -1,8 +1,8 @@
-import dev.slne.surf.surfapi.gradle.util.registerRequired
-import dev.slne.surf.surfapi.gradle.util.withSurfApiBukkit
+import dev.slne.surf.api.gradle.util.registerRequired
+import dev.slne.surf.api.gradle.util.withSurfApiBukkit
 
 plugins {
-    id("dev.slne.surf.surfapi.gradle.paper-plugin") version "1.21.11+"
+    id("dev.slne.surf.api.gradle.paper-plugin")
 }
 
 group = "dev.slne.surf.moderation.tools"

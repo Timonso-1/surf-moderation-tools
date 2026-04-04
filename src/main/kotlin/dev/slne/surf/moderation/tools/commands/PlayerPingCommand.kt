@@ -5,12 +5,12 @@ import dev.jorel.commandapi.kotlindsl.booleanArgument
 import dev.jorel.commandapi.kotlindsl.commandAPICommand
 import dev.jorel.commandapi.kotlindsl.getValue
 import dev.jorel.commandapi.kotlindsl.entitySelectorArgumentOnePlayer
+import dev.slne.surf.api.core.messages.adventure.playSound
+import dev.slne.surf.api.core.messages.adventure.sendText
+import dev.slne.surf.api.paper.command.executors.anyExecutorSuspend
 import dev.slne.surf.moderation.tools.plugin
 import dev.slne.surf.moderation.tools.utils.PermissionRegistry
 import dev.slne.surf.moderation.tools.utils.appendArtyPrefix
-import dev.slne.surf.surfapi.bukkit.api.command.executors.anyExecutorSuspend
-import dev.slne.surf.surfapi.core.api.messages.adventure.playSound
-import dev.slne.surf.surfapi.core.api.messages.adventure.sendText
 import kotlinx.coroutines.withContext
 import net.kyori.adventure.sound.Sound.Source
 import net.kyori.adventure.text.format.TextDecoration

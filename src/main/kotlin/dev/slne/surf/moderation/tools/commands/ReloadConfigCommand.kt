@@ -3,9 +3,9 @@ package dev.slne.surf.moderation.tools.commands
 import dev.jorel.commandapi.CommandAPICommand
 import dev.jorel.commandapi.kotlindsl.anyExecutor
 import dev.jorel.commandapi.kotlindsl.subcommand
+import dev.slne.surf.api.core.messages.adventure.sendText
 import dev.slne.surf.moderation.tools.config.SurfModerationToolConfig
 import dev.slne.surf.moderation.tools.utils.PermissionRegistry
-import dev.slne.surf.surfapi.core.api.messages.adventure.sendText
 import kotlin.system.measureTimeMillis
 
 fun CommandAPICommand.surfModToolsReloadCommand() = subcommand("reload") {

@@ -1,8 +1,9 @@
 package dev.slne.surf.moderation.tools.faq
 
-import dev.slne.surf.surfapi.core.api.messages.adventure.buildText
-import dev.slne.surf.surfapi.core.api.messages.adventure.clickOpensUrl
-import dev.slne.surf.surfapi.core.api.messages.builder.SurfComponentBuilder
+import dev.slne.surf.api.core.messages.adventure.buildText
+import dev.slne.surf.api.core.messages.adventure.clickOpensUrl
+import dev.slne.surf.api.core.messages.builder.SurfComponentBuilder
+
 
 enum class Faq(val id: String, message: SurfComponentBuilder.() -> Unit) {
     ASK("ask", {
