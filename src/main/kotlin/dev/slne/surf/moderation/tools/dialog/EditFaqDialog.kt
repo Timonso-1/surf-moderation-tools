@@ -6,7 +6,6 @@ import dev.slne.surf.moderation.tools.faq.Faq
 import dev.slne.surf.moderation.tools.config.SurfModerationToolConfig
 import io.papermc.paper.registry.data.dialog.ActionButton
 import org.bukkit.entity.Player
-import net.kyori.adventure.text.minimessage.MiniMessage.miniMessage
 
 fun createEditFaqDialog(faq: Faq) = dialog {
     base {
