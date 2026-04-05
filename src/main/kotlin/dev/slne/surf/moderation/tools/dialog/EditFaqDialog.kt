@@ -119,7 +119,7 @@ private fun createSaveChangesButton(faq: Faq): ActionButton = actionButton {
             } else {
                 SurfModerationToolConfig.edit {
                     faqs.removeIf { it.id == faq.id }
-                    faqs.add(Faq(faqName, faqContent))
+                    faqs.add(Faq(faqName, faqContent, faq.enabled))
                 }
                 SurfModerationToolConfig.save()
                 player.showDialog(createEditSuccessNotice(player))
