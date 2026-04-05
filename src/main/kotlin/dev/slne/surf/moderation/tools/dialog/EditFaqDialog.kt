@@ -6,6 +6,7 @@ import dev.slne.surf.moderation.tools.faq.Faq
 import dev.slne.surf.moderation.tools.config.SurfModerationToolConfig
 import io.papermc.paper.registry.data.dialog.ActionButton
 import org.bukkit.entity.Player
+import net.kyori.adventure.text.minimessage.MiniMessage.miniMessage
 
 fun createEditFaqDialog(faq: Faq) = dialog {
     base {
@@ -32,19 +33,34 @@ fun createEditFaqDialog(faq: Faq) = dialog {
                 multiline(Int.MAX_VALUE, 200)
             }
         }
+    }
 
-        type {
-            multiAction {
-                columns(2)
-                action(cancelEditButton(faq))
-                action(createSaveChangesButton(faq))
-            }
+    type {
+        multiAction {
+            columns(2)
+            action(createEditPreviewButton(faq))
+            action(createCancelEditButton(faq))
+            action(createSaveChangesButton(faq))
         }
     }
 }
 
+private fun createEditPreviewButton(faq: Faq): ActionButton = actionButton {
+    label { text("Vorschau") }
+    tooltip { info("Zeigt eine Vorschau des FAQ-Inhalts") }
+    action {
+        customPlayerClick { input, player ->
+            val faqContent = input.getText("faqContent")?.trim() ?: ""
+            if (faqContent.isEmpty()) {
+                player.showDialog(createMissingFaqContentNotice(player))
+                return@customPlayerClick
+            }
+            player.showDialog(createFaqPreviewDialog(faqContent))
+        }
+    }
+}
 
-private fun cancelEditButton(faq: Faq): ActionButton = actionButton {
+private fun createCancelEditButton(faq: Faq): ActionButton = actionButton {
     label { text("Abbrechen") }
     tooltip { info("Abbrechen und zurück zu den FAQ Details") }
     action {

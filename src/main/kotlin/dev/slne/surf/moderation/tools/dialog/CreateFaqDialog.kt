@@ -32,8 +32,25 @@ fun createFaqDialog() = dialog {
     type {
         multiAction {
             columns(2)
+            action(createPreviewButton())
+            action(createCancelCreateButton())
             action(createFaqButton())
-            action(cancelCreateButton())
+        }
+    }
+}
+
+
+private fun createPreviewButton(): ActionButton = actionButton {
+    label { text("Vorschau") }
+    tooltip { info("Zeigt eine Vorschau des FAQ-Inhalts") }
+    action {
+        customPlayerClick { input, player ->
+            val faqContent = input.getText("faqContent")?.trim() ?: ""
+            if (faqContent.isEmpty()) {
+                player.showDialog(createMissingFaqContentNotice(player))
+                return@customPlayerClick
+            }
+            player.showDialog(createFaqPreviewDialog(faqContent))
         }
     }
 }
@@ -112,7 +129,7 @@ private fun createMissingFaqContentNotice(player: Player) = dialog {
     }
 }
 
-private fun cancelCreateButton(): ActionButton = actionButton {
+private fun createCancelCreateButton(): ActionButton = actionButton {
     label { text("Abbrechen") }
     tooltip { info("Abbrechen und zurück zu den Einstellungen") }
     action {
