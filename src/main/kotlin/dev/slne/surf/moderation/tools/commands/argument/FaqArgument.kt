@@ -11,12 +11,16 @@ import dev.slne.surf.api.core.messages.adventure.buildText
 class FaqArgument(nodeName: String) : CustomArgument<Faq, String>(
     StringArgument(nodeName),
     { info ->
-        SurfModerationToolConfig.getConfig().faqs.find { it.id == info.input } ?: throw CustomArgumentException.fromAdventureComponent(
+        val normalizedInput = info.input.trim()
+
+        SurfModerationToolConfig.getConfig().faqs.find {
+            it.id.equals(normalizedInput, ignoreCase = true)
+        } ?: throw CustomArgumentException.fromAdventureComponent(
             buildText {
                 appendErrorPrefix()
                 error("Das FAQ")
                 appendSpace()
-                variableValue(info.input)
+                variableValue(normalizedInput)
                 appendSpace()
                 error("existiert nicht.")
             }
