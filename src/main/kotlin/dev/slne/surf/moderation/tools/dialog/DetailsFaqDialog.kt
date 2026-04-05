@@ -12,6 +12,14 @@ fun createFaqDetailsDialog(faq: Faq) = dialog {
             primary("FAQ Details von ")
             variableValue(faq.id)
         }
+        body {
+            plainMessage {
+                primary("Inhalt:")
+            }
+            plainMessage {
+                append(faq.asComponent())
+            }
+        }
         type {
             multiAction {
                 columns(2)
