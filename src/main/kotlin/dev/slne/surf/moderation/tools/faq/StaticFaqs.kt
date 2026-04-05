@@ -11,27 +11,6 @@ enum class StaticFaqs(val id: String, val message: SurfComponentBuilder.() -> Un
         text("Stell deine Frage direkt und hab kurz Geduld, bis du eine Antwort bekommst.")
     }),
 
-    CUSTOM_ENCHANTMENTS("custom-enchantments", {
-        append {
-            variableValue("Hier")
-            hoverEvent(buildText { spacer("Klicke, um zur Informationsseite zu gelangen.") })
-            clickOpensUrl("https://server.castcrafter.de/custom-enchantments.html")
-        }
-        text(" erfährst du alles über die Custom Enchantments.")
-    }),
-
-    FEATURES_SURVIVAL_SERVER("features-survival-server", {
-        text("Der Survival Server hat einige Features, welche du")
-        appendSpace()
-        append {
-            variableValue("hier")
-            hoverEvent(buildText { spacer("Klicke, um zur Informationsseite zu gelangen.") })
-            clickOpensUrl("https://server.castcrafter.de/features.html")
-        }
-        appendSpace()
-        text("einsehen kannst.")
-    }),
-
     HOW_TO_INSTALL_VOICE_CHAT("how-to-install-voice-chat", {
         append {
             variableValue("Hier")
@@ -187,17 +166,6 @@ enum class StaticFaqs(val id: String, val message: SurfComponentBuilder.() -> Un
         text("kannst du das Server-Modpack herunterladen.")
     }),
 
-    SURVIVAL_EVENTS("survival-events", {
-        text("Welche Survival-Events es auf dem Survival-Server gibt und wann diese stattfinden, erfährst du")
-        appendSpace()
-        append {
-            variableValue("hier")
-            hoverEvent(buildText { spacer("Klicke, um zur Informationsseite zu gelangen.") })
-            clickOpensUrl("https://server.castcrafter.de/events.html")
-        }
-        text(".")
-    }),
-
     TAKE_PART_IN_EVENT("take-part-in-event", {
         text("Wie du an einem Event teilnehmen kannst, erfährst du")
         appendSpace()
@@ -219,54 +187,6 @@ enum class StaticFaqs(val id: String, val message: SurfComponentBuilder.() -> Un
             clickOpensUrl("https://server.castcrafter.de/faq.html#veteran-info")
         }
         text(".")
-    }),
-
-    WHEN_DOES_THE_END_OPEN("when-does-the-end-open", {
-        text("Wann das End öffnet, ist noch unklar. Falls es aber feststeht, wird es in den Server-Updates auf dem")
-        appendSpace()
-        append {
-            variableValue("Discord")
-            hoverEvent(buildText { spacer("Klicke, um zum Discord zu gelangen.") })
-            clickOpensUrl("https://discord.com/channels/133198459531558912/980810495877607524")
-        }
-        appendSpace()
-        text("angekündigt.")
-    }),
-
-    WHY_NO_ELYTRA_IN_THE_END("why-no-elytra-in-the-end", {
-        text("Du fragst dich, warum man im End nicht mit Elytren fliegen kann?")
-        appendSpace()
-        append {
-            variableValue("Hier")
-            hoverEvent(buildText { spacer("Klicke, um zur Informationsseite zu gelangen.") })
-            clickOpensUrl("https://server.castcrafter.de/faq#why-no-elytra-in-end")
-        }
-        appendSpace()
-        text("findest du die Antwort.")
-    }),
-
-    WHY_NO_TELEPORTATION("why-no-teleportation", {
-        text("Du fragst dich, warum es auf dem Server keine Teleportation gibt?")
-        appendSpace()
-        append {
-            variableValue("Hier")
-            hoverEvent(buildText { spacer("Klicke, um zur Informationsseite zu gelangen.") })
-            clickOpensUrl("https://server.castcrafter.de/faq#why-no-teleportation")
-        }
-        appendSpace()
-        text("findest du die Antwort.")
-    }),
-
-    WHY_NO_VILLAGERS("why-no-villagers", {
-        text("Du fragst dich, warum es auf dem Server keine Dorfbewohner gibt?")
-        appendSpace()
-        append {
-            variableValue("Hier")
-            hoverEvent(buildText { spacer("Klicke, um zur Informationsseite zu gelangen.") })
-            clickOpensUrl("https://server.castcrafter.de/specials#no-villagers")
-        }
-        appendSpace()
-        text("findest du die Antwort.")
     });
 
     companion object {
